@@ -2,4 +2,4 @@ ticket-001: Use maven to create a mvn project for this (CHECK)
 ticket-002: Write code that gets all the images in a folder (CHECK)
 ticket-003: Write code that reads in an image file and turn it into an image folder (CHECK)
 ticket-004: Write code that reads in the altered images that is stored in a different subfolder (CHECK)
-ticket-005: Write a method that finds matching images in altered subfolders
+ticket-005: Write a method that finds matching images in altered subfolders (CHECK)
