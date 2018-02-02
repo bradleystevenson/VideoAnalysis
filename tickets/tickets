@@ -3,3 +3,5 @@ ticket-002: Write code that gets all the images in a folder (CHECK)
 ticket-003: Write code that reads in an image file and turn it into an image folder (CHECK)
 ticket-004: Write code that reads in the altered images that is stored in a different subfolder (CHECK)
 ticket-005: Write a method that finds matching images in altered subfolders (CHECK)
+ticket-006: Write a function that compares two images and prints out which pixels are different between the two images (their coordinates and their colors)
+ticket-007: Put the different pixels that we found in a database
