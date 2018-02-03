@@ -8,6 +8,25 @@ public class Pixel {
     private int green;
     private int blue;
 
+    public int getRed() {
+	return red;
+    }
+
+    public int getGreen() {
+	return green;
+    }
+
+    public int getBlue() {
+	return blue;
+    }
+	
+
+    public void comparePixel(Pixel inputPixel) {
+	if (red != inputPixel.getRed() || green != inputPixel.getGreen() || blue != inputPixel.getBlue()) {
+	    System.out.println("difference");
+	}
+    }
+
     public Pixel(int xInput, int yInput, int colorInput) {
 	x = xInput;
 	y = yInput;

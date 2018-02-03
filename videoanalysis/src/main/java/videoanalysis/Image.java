@@ -11,6 +11,18 @@ public class Image {
     private int width;
     private int height;
     private Pixel[][] pixels;
+
+    public int getWidth() {
+	return width;
+    }
+
+    public int getHeight() {
+	return height;
+    }
+
+    public Pixel getPixel(int width, int height) {
+	return pixels[width][height];
+    }
     
     public Image(String imageNameInput) throws Exception {
 	imageName = imageNameInput;

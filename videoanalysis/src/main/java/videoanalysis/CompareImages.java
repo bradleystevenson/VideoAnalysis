@@ -30,16 +30,32 @@ public class CompareImages {
 	}
     }
 
-    private static void compareImages(ArrayList<String> alteredImages, ArrayList<String> originalImages) {
+    private static void compareImages(ArrayList<String> alteredImages, ArrayList<String> originalImages) throws Exception {
 	int matchCount = 0;
 	for (int inx = 0; inx < alteredImages.size(); inx++) {
 	    for (int iny = 0; iny < originalImages.size(); iny++) {
 		if (getFileName(alteredImages.get(inx)).equals(getFileName(originalImages.get(iny)))) {
-		    matchCount++;
+		    Image originalImage = new Image(originalImages.get(iny));
+		    Image alteredImage = new Image(alteredImages.get(inx));
+		    compareImages(originalImage, alteredImage);
 		}
 	    }
 	}
 	System.out.println(matchCount);
+    }
+
+    private static void compareImages(Image originalImage, Image alteredImage) {
+	int width = originalImage.getWidth();
+	int height = originalImage.getHeight();
+	for (int inx = 0; inx < width; inx++) {
+	    for (int iny = 0; iny < height; iny++) {
+		Pixel originalPixel = originalImage.getPixel(inx, iny);
+		Pixel alteredPixel = alteredImage.getPixel(inx, iny);
+		originalPixel.comparePixel(alteredPixel);
+
+	    }
+	}
+
     }
 
     private static String getFileName(String input) {
