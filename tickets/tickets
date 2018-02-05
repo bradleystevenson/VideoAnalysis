@@ -5,6 +5,6 @@ ticket-004: Write code that reads in the altered images that is stored in a diff
 ticket-005: Write a method that finds matching images in altered subfolders (CHECK)
 ticket-006: Write a function that compares two images and prints out which pixels are different between the two images (their coordinates and their colors) (CHECK)
 ticket-007: Put the different pixels that we found in a database (CHECK)
-ticket-008: Write a way to calculate the range of the black pixels from the database
+ticket-008: Write a way to calculate the range of the black pixels from the database (CHECK)
 
 
