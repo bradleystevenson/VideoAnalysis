@@ -1,12 +1,21 @@
+
 package videoanalysis;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.sql.*;
 
 public class CompareImages {
-
-
+    
+    private static String databaseString = "jdbc:sqlite:/Users/Bradley/Programs/VideoAnalysis/videoanalysis/database.db";
+    private static Connection connection;
+    
+    private static void connect() throws Exception{
+	connection = DriverManager.getConnection(databaseString);	
+    }
+    
     public static void compareImages(String folderName) throws Exception {
+	connect();
 	File folder = new File(folderName);
 	File[] files = folder.listFiles();	
 	ArrayList<String> originalImages = new ArrayList<String>();
@@ -44,14 +53,21 @@ public class CompareImages {
 	System.out.println(matchCount);
     }
 
-    private static void compareImages(Image originalImage, Image alteredImage) {
+    private static void compareImages(Image originalImage, Image alteredImage) throws Exception {
 	int width = originalImage.getWidth();
 	int height = originalImage.getHeight();
 	for (int inx = 0; inx < width; inx++) {
 	    for (int iny = 0; iny < height; iny++) {
 		Pixel originalPixel = originalImage.getPixel(inx, iny);
 		Pixel alteredPixel = alteredImage.getPixel(inx, iny);
-		originalPixel.comparePixel(alteredPixel);
+		if (originalPixel.comparePixel(alteredPixel)) {
+		    PreparedStatement statement = connection.prepareStatement("insert into blackpixels (red, green, blue) values (?, ?, ?)");
+		    statement.setInt(1, originalPixel.getRed());
+		    statement.setInt(2, originalPixel.getGreen());
+		    statement.setInt(3, originalPixel.getBlue());
+		    statement.executeUpdate();
+		    statement.close();
+		}
 
 	    }
 	}

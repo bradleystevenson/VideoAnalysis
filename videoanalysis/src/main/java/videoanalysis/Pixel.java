@@ -21,10 +21,11 @@ public class Pixel {
     }
 	
 
-    public void comparePixel(Pixel inputPixel) {
+    public boolean comparePixel(Pixel inputPixel) {
 	if (red != inputPixel.getRed() || green != inputPixel.getGreen() || blue != inputPixel.getBlue()) {
-	    System.out.println("difference");
+	    return true;
 	}
+	return false;
     }
 
     public Pixel(int xInput, int yInput, int colorInput) {
