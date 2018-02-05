@@ -6,5 +6,7 @@ ticket-005: Write a method that finds matching images in altered subfolders (CHE
 ticket-006: Write a function that compares two images and prints out which pixels are different between the two images (their coordinates and their colors) (CHECK)
 ticket-007: Put the different pixels that we found in a database (CHECK)
 ticket-008: Write a way to calculate the range of the black pixels from the database (CHECK)
-
+ticket-009: Create text files in all the folders of play images storing information about which images are scoreboards and which ones arent
+ticket-010: Parse the text files created in ticket-009 and put it into the database the image name and if scoreboard or not
+ticket-011: Count the number of black pixels in the image and see if there is a correlation between that and if its a scoreboard or not
 
