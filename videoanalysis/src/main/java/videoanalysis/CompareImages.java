@@ -85,7 +85,6 @@ public class CompareImages {
 	}
 	return returnLine;
     }
-    
 
     private static ArrayList<String> getImagesFromFolder(File folder) {
 	ArrayList<String> returnStrings = new ArrayList<String>();

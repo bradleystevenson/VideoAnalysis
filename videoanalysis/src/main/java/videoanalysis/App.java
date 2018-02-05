@@ -12,7 +12,7 @@ public class App
     public static void main( String[] args ) throws Exception
     {
 	String folderName = args[0];
-	CompareImages.compareImages(folderName);
+	/*	CompareImages.compareImages(folderName);
 	File folder = new File(folderName);	
 	File[] listOfFiles = folder.listFiles();
 	for (File file : listOfFiles) {
@@ -21,6 +21,8 @@ public class App
 		//System.out.println(file);
 	    }
 	}
+	*/
+	ColorRanges.determineColorRanges();
     }
 
 }
