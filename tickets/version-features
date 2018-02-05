@@ -1,2 +1,3 @@
 version-feature-001: Find a way to read all the images in a directory containing the pictures of the plays (CHECK)
 version-feature-002: Create a little program that takes in an altered image (when compared to the original) and mark which colors are the selected ones (CHECK)
+version-feature-003: Write code that counts all the black pixels in an image and determines whether or not it is a scoreboard image based on that
