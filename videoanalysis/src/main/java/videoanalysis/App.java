@@ -22,7 +22,7 @@ public class App
 		//System.out.println(file);
 	    } else if (file.toString().endsWith("ScoreboardAnswers.txt")) {
 		System.out.println("fund the file i was looking for");
-
+		ScoreboardAnswers.parseFile(file.toString());
 	    }
 	}
 	ColorRanges.determineColorRanges();

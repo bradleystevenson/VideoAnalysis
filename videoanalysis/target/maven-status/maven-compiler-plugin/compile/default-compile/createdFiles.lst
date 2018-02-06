@@ -1,4 +1,5 @@
 videoanalysis/Image.class
+videoanalysis/ScoreboardAnswers.class
 videoanalysis/App.class
 videoanalysis/CompareImages.class
 videoanalysis/ColorRanges.class
