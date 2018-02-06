@@ -16,6 +16,13 @@ public class ColorRanges {
         connection = DriverManager.getConnection(databaseString);
     }
 
+    public static boolean pixelIsBlack(Pixel pixel) {
+	int red = pixel.getRed();
+	int green = pixel.getGreen();
+	int blue = pixel.getBlue();
+	return (Math.abs(red - blackPixelRed) <= 30 && Math.abs(green - blackPixelGreen) <= 30 && Math.abs(blue - blackPixelBlue) <= 30);
+    }
+
 
     public static void determineColorRanges()  throws Exception {
 	connect();
@@ -53,4 +60,5 @@ public class ColorRanges {
 	set.close();
 	statement.close();
     }
+    
 }

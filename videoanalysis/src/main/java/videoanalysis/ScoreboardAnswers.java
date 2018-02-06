@@ -74,18 +74,19 @@ public class ScoreboardAnswers {
 	for (inx = inx + 1; inx < line.length(); inx++) {
 	    result = result + line.charAt(inx);
 	}
-	System.out.println(result);
 	for (inx = firstNumber; inx <= secondNumber; inx++) {
 	    String imageNumber = convertIntToString(inx, maxDigits) + ".png";
 	    String imageName = getImageName(imageNumber);
-	    insertToDatabase(imageName, result);
+	    Image image = new Image(imageName);
+	    insertToDatabase(imageName, result, image.blackPixelCount());
 	}
     }
 
-    private static void insertToDatabase(String imageName, String result) throws Exception {
-	PreparedStatement statement = connection.prepareStatement("insert into scoreboardresults (imageName, result) values (?, ?)");
+    private static void insertToDatabase(String imageName, String result, int blackPixelCount) throws Exception {
+	PreparedStatement statement = connection.prepareStatement("insert into scoreboardresults (imageName, result, blackpixelcount) values (?, ?, ?)");
 	statement.setString(1, imageName);
 	statement.setString(2, result);
+	statement.setInt(3, blackPixelCount);
 	statement.executeUpdate();
 	statement.close();
     }
