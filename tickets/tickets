@@ -10,5 +10,7 @@ ticket-009: Create text files in all the folders of play images storing informat
 ticket-010: Parse the text files created in ticket-009 and put it into the database the image name and if scoreboard or not (CHECK)
 ticket-011: Count the number of black pixels in the image and store that result in the database (CHECK)
 ticket-012: Determine if there is a correlation between the number of black pixels in an image and if the image is scoreboard or field (CHECK)
+ticket-013: Write a class that takes in an input image and returns whether scoreboard or field
+ticket-014: Have it so that all the images in a folder get passed through the scanner and the output is stored in a text file in the original folder
 
 
