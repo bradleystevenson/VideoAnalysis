@@ -19,6 +19,17 @@ public class ScoreboardAnswers {
         connection = DriverManager.getConnection(databaseString);
     }
 
+    public static String scoreboardScanner(Image image) {
+	if (blackCutoffValid) {
+	    int blackPixelCount = image.blackPixelCount();
+	    if (blackPixelCount > blackCutoffValue) {
+		return "Scoreboard";
+	    }
+	    return "Field";
+	}
+	return null;
+    }
+
     private static int getMaxFieldBlack() throws Exception {
 	PreparedStatement statement = connection.prepareStatement("select max(blackpixelcount) from scoreboardresults where result like 'Field'");
 	ResultSet set = statement.executeQuery();
