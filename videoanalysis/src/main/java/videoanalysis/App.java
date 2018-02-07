@@ -26,10 +26,7 @@ public class App
 	    }
 	}
 	ScoreboardAnswers.determineScoreboardEquation();
-	Image image = new Image("/Users/Bradley/Documents/BucsAtFalcons/BucsAtFalcons 0002.png");
-	System.out.println(ScoreboardAnswers.scoreboardScanner(image));
-	image = new Image("/Users/Bradley/Documents/BucsAtFalcons/BucsAtFalcons 3026.png");
-	System.out.println(ScoreboardAnswers.scoreboardScanner(image));
+	ScoreboardScanner.determineScoreboards(folderName);
     }
 
 }

@@ -1,6 +1,7 @@
-videoanalysis/Image.class
 videoanalysis/ScoreboardAnswers.class
 videoanalysis/App.class
 videoanalysis/CompareImages.class
-videoanalysis/ColorRanges.class
 videoanalysis/Pixel.class
+videoanalysis/Image.class
+videoanalysis/ScoreboardScanner.class
+videoanalysis/ColorRanges.class
