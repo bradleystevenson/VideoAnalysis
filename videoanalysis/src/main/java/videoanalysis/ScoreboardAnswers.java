@@ -12,10 +12,69 @@ public class ScoreboardAnswers {
     private static String folderName;
     private static String databaseString = "jdbc:sqlite:/Users/Bradley/Programs/VideoAnalysis/videoanalysis/database.db";
     private static Connection connection;
+    private static boolean blackCutoffValid = false;
+    private static int blackCutoffValue;
     
     private static void connect() throws Exception{
         connection = DriverManager.getConnection(databaseString);
     }
+
+    private static int getMaxFieldBlack() throws Exception {
+	PreparedStatement statement = connection.prepareStatement("select max(blackpixelcount) from scoreboardresults where result like 'Field'");
+	ResultSet set = statement.executeQuery();
+	set.next();
+	int returnInt = set.getInt(1);
+	set.close();
+	statement.close();
+	return returnInt;
+    }
+
+    private static int getMinFieldBlack() throws Exception {
+	PreparedStatement statement = connection.prepareStatement("select min(blackpixelcount) from scoreboardresults where result like 'Field'");
+	ResultSet set = statement.executeQuery();
+	set.next();
+	int returnInt = set.getInt(1);
+	set.close();
+	statement.close();
+	return returnInt;
+    }
+
+    private static int getMaxScoreboardBlack() throws Exception {
+	PreparedStatement statement = connection.prepareStatement("select max(blackpixelcount) from scoreboardresults where result like 'Scoreboard'");
+	ResultSet set = statement.executeQuery();
+	set.next();
+	int returnInt = set.getInt(1);
+	set.close();
+	statement.close();
+	return returnInt;
+    }
+
+    private static int getMinScoreboardBlack() throws Exception {
+	PreparedStatement statement = connection.prepareStatement("select min(blackpixelcount) from scoreboardresults where result like'Scoreboard'");
+	ResultSet set = statement.executeQuery();
+	set.next();
+	int returnInt = set.getInt(1);
+	set.close();
+	statement.close();
+	return returnInt;
+    }
+
+    public static void determineScoreboardEquation() throws Exception {
+	connect();
+	int maxFieldBlack = getMaxFieldBlack();
+	int minFieldBlack = getMinFieldBlack();
+	int maxScoreboardBlack = getMaxScoreboardBlack();
+	int minScoreboardBlack = getMinScoreboardBlack();
+	System.out.println("maxFieldBlack: " + maxFieldBlack);
+	System.out.println("minFieldBlack: " + minFieldBlack);
+	System.out.println("maxScoreboardBlack: " + maxScoreboardBlack);
+	System.out.println("minScoreboardBlack: " + minScoreboardBlack);
+	if (maxFieldBlack < minScoreboardBlack) {
+	    blackCutoffValid = true;
+	    blackCutoffValue = (maxFieldBlack + minScoreboardBlack) / 2;
+	}
+    }
+
 
     
     private static String getUpToLastSlash(String fileName) {
