@@ -1,2 +1,2 @@
 sub-version-001: Add the improvement that you only check unknown scoreboard tickets (CHECK)
-sub-version-002: Create a flag that lets you signal if you want to add the color pixels to the database or not run those scans
+sub-version-002: Move a bunch of things behind flags so that you dont always need to run them
