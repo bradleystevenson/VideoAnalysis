@@ -8,12 +8,26 @@ import java.io.File;
  */
 public class App 
 {
+
+    private static boolean colorFlag = false;
     
     public static void main( String[] args ) throws Exception
     {
+
+	for (int inx = 0; inx < args.length; inx++) {
+	    if (args[inx].startsWith("-")) {
+		determineFlags(args[inx]);
+	    }
+	}
+	String folderName = args[indexOfFile(args)];
+	if (colorFlag) {
+	    CompareImages.compareImages(folderName);
+	}
+	/*
 	String folderName = args[0];
 	/* CompareImages.compareImages(folderName);
 	 */
+	/*
 	File folder = new File(folderName);	
 	File[] listOfFiles = folder.listFiles();
 	ColorRanges.determineColorRanges();
@@ -27,6 +41,22 @@ public class App
 	}
 	ScoreboardAnswers.determineScoreboardEquation();
 	ScoreboardScanner.determineScoreboards(folderName);
+	*/
+    }
+
+    private static void determineFlags(String inputLine) {
+	if (inputLine.contains("c")) {
+	    colorFlag = true;
+	}
+    }
+
+    private static int indexOfFile(String[] args) {
+	for (int inx = 0; inx < args.length; inx++) {
+	    if (!args[inx].startsWith("-")) {
+		return inx;
+	    }
+	}
+	return -1;
     }
 
 }
