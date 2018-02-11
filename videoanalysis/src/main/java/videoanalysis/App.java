@@ -10,6 +10,8 @@ public class App
 {
 
     private static boolean colorFlag = false;
+    private static boolean scoreboardFlag = false;
+
     
     public static void main( String[] args ) throws Exception
     {
@@ -22,6 +24,9 @@ public class App
 	String folderName = args[indexOfFile(args)];
 	if (colorFlag) {
 	    CompareImages.compareImages(folderName);
+	}
+	if (scoreboardFlag) {
+	    ScoreboardAnswers.parseFile(folderName + "/ScoreboardAnswers.txt");
 	}
 	/*
 	String folderName = args[0];
@@ -47,6 +52,9 @@ public class App
     private static void determineFlags(String inputLine) {
 	if (inputLine.contains("c")) {
 	    colorFlag = true;
+	}
+	if (inputLine.contains("s")) {
+	    scoreboardFlag = true;
 	}
     }
 
