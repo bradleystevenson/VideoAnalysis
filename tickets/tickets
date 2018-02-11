@@ -13,5 +13,6 @@ ticket-012: Determine if there is a correlation between the number of black pixe
 ticket-013: Write a class that takes in an input image and returns whether scoreboard or field (CHECK)
 ticket-014: Have it so that all the images in a folder get passed through the scanner and the output is stored in a text file in the original folder (CHECK)
 ticket-015: Add code that will read an already made text files and verify that all images tested arent in it (CHECK)
-
+ticket-016: Write code that will detect if a flag (-c) was set to true (CHECK)
+ticket-017: Write code that will detect if a flag (-s) was set to true and if so run the scoreboard answers methods
 
