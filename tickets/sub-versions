@@ -1,2 +1,4 @@
 sub-version-001: Add the improvement that you only check unknown scoreboard tickets (CHECK)
-sub-version-002: Move a bunch of things behind flags so that you dont always need to run them
+sub-version-002: Move a bunch of things behind flags so that you dont always need to run them (CHECK)
+
+
