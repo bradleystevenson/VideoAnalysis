@@ -30,13 +30,15 @@ public class CompareImages {
 	}
 	ArrayList<ArrayList<String>> alteredImages = new ArrayList<ArrayList<String>>();
 	ArrayList<String> folderNames = new ArrayList<String>();
+	ArrayList<String> tableNames = new ArrayList<String>();
 	for (File alteredFolder : folders) {
 	    createTable(alteredFolder.getName());
 	    folderNames.add(alteredFolder.toString());
 	    alteredImages.add(getImagesFromFolder(alteredFolder));
+	    tableNames.add(alteredFolder.getName());
 	}
 	for (int inx = 0; inx < alteredImages.size(); inx++) {
-	    compareImages(alteredImages.get(inx), originalImages);
+	    compareImages(alteredImages.get(inx), originalImages, tableNames.get(inx));
 	}
     }
 
@@ -46,21 +48,21 @@ public class CompareImages {
 	statement.close();	
     }
 
-    private static void compareImages(ArrayList<String> alteredImages, ArrayList<String> originalImages) throws Exception {
+    private static void compareImages(ArrayList<String> alteredImages, ArrayList<String> originalImages, String tableName) throws Exception {
 	int matchCount = 0;
 	for (int inx = 0; inx < alteredImages.size(); inx++) {
 	    for (int iny = 0; iny < originalImages.size(); iny++) {
 		if (getFileName(alteredImages.get(inx)).equals(getFileName(originalImages.get(iny)))) {
 		    Image originalImage = new Image(originalImages.get(iny));
 		    Image alteredImage = new Image(alteredImages.get(inx));
-		    compareImages(originalImage, alteredImage);
+		    compareImages(originalImage, alteredImage, tableName);
 		}
 	    }
 	}
 	System.out.println(matchCount);
     }
 
-    private static void compareImages(Image originalImage, Image alteredImage) throws Exception {
+    private static void compareImages(Image originalImage, Image alteredImage, String tableName) throws Exception {
 	int width = originalImage.getWidth();
 	int height = originalImage.getHeight();
 	for (int inx = 0; inx < width; inx++) {
@@ -68,7 +70,7 @@ public class CompareImages {
 		Pixel originalPixel = originalImage.getPixel(inx, iny);
 		Pixel alteredPixel = alteredImage.getPixel(inx, iny);
 		if (originalPixel.comparePixel(alteredPixel)) {
-		    PreparedStatement statement = connection.prepareStatement("insert into blackpixels (red, green, blue) values (?, ?, ?)");
+		    PreparedStatement statement = connection.prepareStatement("insert into " + tableName + " (red, green, blue) values (?, ?, ?)");
 		    statement.setInt(1, originalPixel.getRed());
 		    statement.setInt(2, originalPixel.getGreen());
 		    statement.setInt(3, originalPixel.getBlue());
