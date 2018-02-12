@@ -31,12 +31,19 @@ public class CompareImages {
 	ArrayList<ArrayList<String>> alteredImages = new ArrayList<ArrayList<String>>();
 	ArrayList<String> folderNames = new ArrayList<String>();
 	for (File alteredFolder : folders) {
+	    createTable(alteredFolder.getName());
 	    folderNames.add(alteredFolder.toString());
 	    alteredImages.add(getImagesFromFolder(alteredFolder));
 	}
 	for (int inx = 0; inx < alteredImages.size(); inx++) {
 	    compareImages(alteredImages.get(inx), originalImages);
 	}
+    }
+
+    private static void createTable(String tableName) throws Exception {
+	PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS " + tableName + " (red integer, green integer, blue integer)");
+	statement.executeUpdate();
+	statement.close();	
     }
 
     private static void compareImages(ArrayList<String> alteredImages, ArrayList<String> originalImages) throws Exception {
