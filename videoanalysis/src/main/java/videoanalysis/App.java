@@ -47,6 +47,7 @@ public class App
 	ScoreboardAnswers.determineScoreboardEquation();
 	ScoreboardScanner.determineScoreboards(folderName);
 	*/
+	PlayParser.parsePlays(folderName);
     }
 
     private static void determineFlags(String inputLine) {

@@ -3,5 +3,6 @@ videoanalysis/App.class
 videoanalysis/CompareImages.class
 videoanalysis/Pixel.class
 videoanalysis/Image.class
+videoanalysis/PlayParser.class
 videoanalysis/ScoreboardScanner.class
 videoanalysis/ColorRanges.class
