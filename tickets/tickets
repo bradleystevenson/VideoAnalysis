@@ -18,4 +18,4 @@ ticket-017: Write code that will detect if a flag (-s) was set to true and if so
 ticket-018: Write code that will find all the folders in the folderName and make a table in their name in their database (CHECK)
 ticket-019: Automatically insert the different pixels into the correct table from ticket-018 (CHECK)
 ticket-020: Write code that reads in the textfile that holds all the scoreboard answers (CHECK)
-ticket-021: Write code that breaks down the list of strings from the text file into plays and prints them into a text file
+ticket-021: Write code that breaks down the list of strings from the text file into plays and prints them into a text file (CHECK)
