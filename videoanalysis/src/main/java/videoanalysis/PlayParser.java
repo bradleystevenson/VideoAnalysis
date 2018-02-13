@@ -2,6 +2,9 @@ package videoanalysis;
 
 import java.util.ArrayList;
 import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 import java.io.FileReader;
 
 public class PlayParser {
@@ -21,9 +24,15 @@ public class PlayParser {
 		printStrings.add(string);
 	    }
 	}
+	printStrings(folderName +"/Plays.txt", printStrings);
+    }
+
+    private static void printStrings(String fileName, ArrayList<String> printStrings) throws Exception {
+	PrintWriter out = new PrintWriter(new FileWriter(fileName));
 	for (String string : printStrings) {
-	    System.out.println(string);
+	    out.println(string);
 	}
+	out.close();
     }
 
     private static ArrayList<ArrayList<String>> sortStrings(ArrayList<String> inputStrings) {
