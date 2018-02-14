@@ -1,5 +1,6 @@
 ticket-022: Copy over the tickets file from the football video game to use here to manage these tickets (CHECK)
 ticket-023: Write code that reads in from the Plays files and gets the plays (CHECK)
-ticket-024: Write code that goes through all the strings from the plays and gets the scoreboard sections
-
+ticket-024: Write code that goes through all the strings from the plays and gets the field sections (CHECK)
+ticket-025: Create a class called CameraAngleScanner that takes in a play and gets all of its field sections
+ticket-026: Create a class that is in charge of reading in the textfile with the answers about the Camera Angle Scanner
 
