@@ -10,6 +10,25 @@ import java.io.FileReader;
 public class PlayParser {
 
 
+    public static ArrayList<Play> getPlays(String folderName) throws Exception {
+	ArrayList<Play> returnArray = new ArrayList<Play>();
+	ArrayList<String> fileStrings = getFileStrings(folderName + "/Plays.txt");
+	ArrayList<String> currentStrings = new ArrayList<String>();
+	currentStrings.add(fileStrings.get(0));
+	for (int inx = 1; inx < fileStrings.size(); inx++) {
+	    String currentString = fileStrings.get(inx);
+	    if (currentString.startsWith("Play:")) {
+		Play play = new Play(currentStrings);
+		returnArray.add(play);
+		currentStrings = new ArrayList<String>();
+	    } 	    
+	}
+	Play play = new Play(currentStrings);
+	returnArray.add(play);
+
+	return returnArray;
+    }
+    
     public static void parsePlays(String folderName) throws Exception {
 	ArrayList<String> fileStrings = getFileStrings(folderName + "/ScoreboardScanner.txt");
 	ArrayList<ArrayList<String>> sortedStrings = sortStrings(fileStrings);

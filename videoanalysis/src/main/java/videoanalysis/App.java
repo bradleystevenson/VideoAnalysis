@@ -1,7 +1,7 @@
 package videoanalysis;
 
 import java.io.File;
-
+import java.util.ArrayList;
 /**
  * Hello world!
  *
@@ -48,6 +48,7 @@ public class App
 	ScoreboardScanner.determineScoreboards(folderName);
 	*/
 	PlayParser.parsePlays(folderName);
+	ArrayList<Play> plays = PlayParser.getPlays(folderName);
     }
 
     private static void determineFlags(String inputLine) {
