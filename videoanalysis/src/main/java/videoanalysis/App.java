@@ -49,6 +49,9 @@ public class App
 	*/
 	PlayParser.parsePlays(folderName);
 	ArrayList<Play> plays = PlayParser.getPlays(folderName);
+	for (Play play : plays) {
+	    CameraAngleScanner.scanImages(play);
+	}
     }
 
     private static void determineFlags(String inputLine) {

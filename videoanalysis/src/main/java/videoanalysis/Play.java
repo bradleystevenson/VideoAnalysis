@@ -6,6 +6,10 @@ public class Play {
 
     private ArrayList<String> scoreboardStrings;
     private ArrayList<String> fieldStrings;
+
+    public ArrayList<String> getFieldStrings() {
+	return fieldStrings;
+    }
     
     public Play(ArrayList<String> inputStrings) {
 	scoreboardStrings = new ArrayList<String>();
