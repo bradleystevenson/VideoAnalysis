@@ -11,7 +11,7 @@ public class App
 
     private static boolean colorFlag = false;
     private static boolean scoreboardFlag = false;
-
+    private static boolean angleFlag = false;
     
     public static void main( String[] args ) throws Exception
     {
@@ -27,6 +27,9 @@ public class App
 	}
 	if (scoreboardFlag) {
 	    ScoreboardAnswers.parseFile(folderName + "/ScoreboardAnswers.txt");
+	}
+	if (angleFlag) {
+	    
 	}
 	/*
 	String folderName = args[0];
@@ -60,6 +63,9 @@ public class App
 	}
 	if (inputLine.contains("s")) {
 	    scoreboardFlag = true;
+	}
+	if (inputLine.contains("a")) {
+	    angleFlag = true;
 	}
     }
 
