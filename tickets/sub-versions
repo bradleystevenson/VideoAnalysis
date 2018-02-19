@@ -4,5 +4,6 @@ sub-version-003: Write code that lets a different folders of images to highlight
 sub-version-004: Write a portion of code that will read in the scoreboard parsed text file and break it into plays (CHECK)
 sub-version-005: Refactor the determining of the color pixels
 sub-version-006: Refactor the reading and writing of text files
+sub-version-007: Refactor the access to the database to be all in one class"
 
 
