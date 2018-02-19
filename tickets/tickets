@@ -2,4 +2,4 @@ ticket-022: Copy over the tickets file from the football video game to use here 
 ticket-023: Write code that reads in from the Plays files and gets the plays (CHECK)
 ticket-024: Write code that goes through all the strings from the plays and gets the field sections (CHECK)
 ticket-025: Create a class called CameraAngleScanner that takes in a play and gets all of its field sections (CHECK)
-ticket-026: Create a color class that takes in the input of a String, the color name
+ticket-026: Create a color class that takes in the input of a String, the color name (CHECK)
