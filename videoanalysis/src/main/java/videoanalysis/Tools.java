@@ -14,6 +14,31 @@ public class Tools {
 
     private static Connection connection;
 
+    public static void insertPixelColor(String tableName, int red, int green, int blue) {
+	try {
+	    PreparedStatement statement = connection.prepareStatement("insert into " + tableName + " (red, green, blue) values (?, ?, ?");
+	    statement.setInt(1, red);
+	    statement.setInt(2, green);
+	    statement.setInt(3, blue);
+	    statement.executeUpdate();
+	    statement.close();
+	} catch (Exception e) {
+	    System.out.println("Error inserting pixel");
+	    System.exit(1);
+	}
+    }
+    
+    public static void createColorTable(String color) {
+	try {
+	    PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS " + color + " (red integer, green integer, blue integer)");
+	    statement.executeUpdate();
+	    statement.close();
+	} catch (Exception e) {
+	    System.out.println("Error creating colorTable");
+	    System.exit(1);
+	}
+    }
+
     public static int calculateColor(String colorTable, String rgbValue) {
 	try {
 	    PreparedStatement statement = connection.prepareStatement("select avg(" + rgbValue + ") from " + colorTable + "pixels");

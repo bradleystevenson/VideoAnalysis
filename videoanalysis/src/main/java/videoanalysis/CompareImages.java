@@ -3,19 +3,10 @@ package videoanalysis;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.sql.*;
 
 public class CompareImages {
     
-    private static String databaseString = "jdbc:sqlite:/Users/Bradley/Programs/VideoAnalysis/videoanalysis/database.db";
-    private static Connection connection;
-    
-    private static void connect() throws Exception{
-	connection = DriverManager.getConnection(databaseString);	
-    }
-    
     public static void compareImages(String folderName) throws Exception {
-	connect();
 	File folder = new File(folderName);
 	File[] files = folder.listFiles();	
 	ArrayList<String> originalImages = new ArrayList<String>();
@@ -32,7 +23,7 @@ public class CompareImages {
 	ArrayList<String> folderNames = new ArrayList<String>();
 	ArrayList<String> tableNames = new ArrayList<String>();
 	for (File alteredFolder : folders) {
-	    createTable(alteredFolder.getName());
+	    Tools.createColorTable(alteredFolder.getName());
 	    folderNames.add(alteredFolder.toString());
 	    alteredImages.add(getImagesFromFolder(alteredFolder));
 	    tableNames.add(alteredFolder.getName());
@@ -40,12 +31,6 @@ public class CompareImages {
 	for (int inx = 0; inx < alteredImages.size(); inx++) {
 	    compareImages(alteredImages.get(inx), originalImages, tableNames.get(inx));
 	}
-    }
-
-    private static void createTable(String tableName) throws Exception {
-	PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS " + tableName + " (red integer, green integer, blue integer)");
-	statement.executeUpdate();
-	statement.close();	
     }
 
     private static void compareImages(ArrayList<String> alteredImages, ArrayList<String> originalImages, String tableName) throws Exception {
@@ -70,12 +55,7 @@ public class CompareImages {
 		Pixel originalPixel = originalImage.getPixel(inx, iny);
 		Pixel alteredPixel = alteredImage.getPixel(inx, iny);
 		if (originalPixel.comparePixel(alteredPixel)) {
-		    PreparedStatement statement = connection.prepareStatement("insert into " + tableName + " (red, green, blue) values (?, ?, ?)");
-		    statement.setInt(1, originalPixel.getRed());
-		    statement.setInt(2, originalPixel.getGreen());
-		    statement.setInt(3, originalPixel.getBlue());
-		    statement.executeUpdate();
-		    statement.close();
+		    Tools.insertPixelColor(tableName, originalPixel.getRed(), originalPixel.getGreen(), originalPixel.getBlue());
 		}
 
 	    }
