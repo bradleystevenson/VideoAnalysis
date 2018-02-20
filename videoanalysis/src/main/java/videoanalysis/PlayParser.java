@@ -1,18 +1,13 @@
 package videoanalysis;
 
 import java.util.ArrayList;
-import java.io.BufferedReader;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-
-import java.io.FileReader;
 
 public class PlayParser {
 
 
     public static ArrayList<Play> getPlays(String folderName) throws Exception {
 	ArrayList<Play> returnArray = new ArrayList<Play>();
-	ArrayList<String> fileStrings = getFileStrings(folderName + "/Plays.txt");
+	ArrayList<String> fileStrings = Tools.readFile(folderName + "/Plays.txt");
 	ArrayList<String> currentStrings = new ArrayList<String>();
 	currentStrings.add(fileStrings.get(0));
 	for (int inx = 1; inx < fileStrings.size(); inx++) {
@@ -30,7 +25,7 @@ public class PlayParser {
     }
     
     public static void parsePlays(String folderName) throws Exception {
-	ArrayList<String> fileStrings = getFileStrings(folderName + "/ScoreboardScanner.txt");
+	ArrayList<String> fileStrings = Tools.readFile(folderName + "/ScoreboardScanner.txt");
 	ArrayList<ArrayList<String>> sortedStrings = sortStrings(fileStrings);
 	ArrayList<String> printStrings = new ArrayList<String>();
 	for (int inx = 0; inx + 1 < sortedStrings.size(); inx=inx+2) {
@@ -43,15 +38,7 @@ public class PlayParser {
 		printStrings.add(string);
 	    }
 	}
-	printStrings(folderName +"/Plays.txt", printStrings);
-    }
-
-    private static void printStrings(String fileName, ArrayList<String> printStrings) throws Exception {
-	PrintWriter out = new PrintWriter(new FileWriter(fileName));
-	for (String string : printStrings) {
-	    out.println(string);
-	}
-	out.close();
+	Tools.printFile(folderName +"/Plays.txt", printStrings);
     }
 
     private static ArrayList<ArrayList<String>> sortStrings(ArrayList<String> inputStrings) {
@@ -68,9 +55,7 @@ public class PlayParser {
 		currentStrings = new ArrayList<String>();
 		currentMatch = getPictureType(string);
 	    }
-	}
-
-	
+	}	
 	return returnArray;
     }
 
@@ -84,17 +69,6 @@ public class PlayParser {
 	    returnString = charx + returnString;
 	}
 	return null;
-    }
-
-    
-    private static ArrayList<String> getFileStrings(String fileName) throws Exception {
-	ArrayList<String> returnArray = new ArrayList<String>();
-	BufferedReader in = new BufferedReader(new FileReader(fileName));
-	String inputLine;
-	while ((inputLine = in.readLine()) != null) {
-	    returnArray.add(inputLine);
-	}
-	return returnArray;
     }
 
 }
