@@ -2,8 +2,6 @@ package videoanalysis;
 
 import java.util.ArrayList;
 import java.io.File;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.sql.*;
 
@@ -106,13 +104,10 @@ public class ScoreboardAnswers {
     public static void parseFile(String fileName) throws Exception {
 	connect();
 	folderName = getUpToLastSlash(fileName);
-	BufferedReader in = new BufferedReader(new FileReader(fileName));
-	String readLine;
-	ArrayList<String> lines = new ArrayList<String>();
+	ArrayList<String> lines = Tools.readFile(fileName);
 	int maxDigits = 0;
-	while ((readLine = in.readLine()) != null) {
-	    lines.add(readLine);
-	    int current = maxDigits(readLine);
+	for (String string : lines) {
+	    int current = maxDigits(string);
 	    if (maxDigits < current) {
 		maxDigits = current;
 	    }
