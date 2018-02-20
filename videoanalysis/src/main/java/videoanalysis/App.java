@@ -15,7 +15,7 @@ public class App
     
     public static void main( String[] args ) throws Exception
     {
-
+	Tools.connect();
 	for (int inx = 0; inx < args.length; inx++) {
 	    if (args[inx].startsWith("-")) {
 		determineFlags(args[inx]);

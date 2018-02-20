@@ -5,11 +5,45 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.io.PrintWriter;
 import java.io.FileWriter;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class Tools {
 
+    private static Connection connection;
 
+    public static ArrayList<String> getColorTableNames() {
+	ArrayList<String> returnStrings = new ArrayList<String>();
+	try {
+	    PreparedStatement statement = connection.prepareStatement("SELECT name FROM sqlite_master WHERE type='table'");
+	    ResultSet set = statement.executeQuery();
+	    while (set.next()) {
+		String temp = set.getString(1).toLowerCase();
+		if (temp.endsWith("pixels")) {
+		    returnStrings.add(temp.replace("pixels", ""));
+		}
+		
+	    }
+	    set.close();
+	    statement.close();
+	} catch (Exception e) {
+	    System.out.println("Error getting table names");
+	    System.exit(1);
+	}
+	return returnStrings;
+    }
+    
+    public static void connect() {
+	try {
+	    connection = DriverManager.getConnection("jdbc:sqlite:/Users/Bradley/Programs/VideoAnalysis/videoanalysis/database.db");
+	} catch (Exception e) {
+	    System.out.println("Unable to connect to database");
+	    System.exit(1);
+	}
+    }
+    
     public static ArrayList<String> readFile(String filePath) {
 	ArrayList<String> returnStrings = new ArrayList<String>();
 	try {

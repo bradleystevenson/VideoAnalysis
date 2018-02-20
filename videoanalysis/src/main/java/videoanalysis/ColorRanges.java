@@ -31,26 +31,11 @@ public class ColorRanges {
     public static void determineColorRanges()  throws Exception {
 	connect();
 	colors = new ArrayList<Color>();
-	ArrayList<String> tableNames = getTableNames();
+	ArrayList<String> tableNames = Tools.getColorTableNames();
 	for (String tableName : tableNames) {
 	    Color color = new Color(tableName);
 	    colors.add(color);
 	}
-    }
-
-    private static ArrayList<String> getTableNames() throws Exception {
-	ArrayList<String> returnArray = new ArrayList<String>();
-	PreparedStatement statement = connection.prepareStatement("SELECT name FROM sqlite_master WHERE type='table'");
-	ResultSet set = statement.executeQuery();
-	while (set.next()) {
-	    String temp = set.getString(1).toLowerCase();
-	    if (temp.endsWith("pixels")) {
-		returnArray.add(temp.replace("pixels", ""));
-	    }
-	}
-	set.close();
-	statement.close();
-	return returnArray;
     }
 
 }
