@@ -145,9 +145,18 @@ public class ScoreboardAnswers {
 	    String imageName = getImageName(imageNumber);
 	    Image image = new Image(imageName);
 	    insertToDatabase(imageName, result, image.blackPixelCount());
+	    insertScoreboardResult(imageName, result);
 	}
     }
 
+    private static void insertScoreboardResult(String imageName, String result) throws Exception {
+	PreparedStatement statement = connection.prepareStatement("insert into scoreboardresults (imageName, result) values (?, ?)");
+	statement.setString(1, imageName);
+	statement.setString(2, result);
+	statement.executeUpdate();
+	statement.close();
+    }
+    
     private static void insertToDatabase(String imageName, String result, int blackPixelCount) throws Exception {
 	PreparedStatement statement = connection.prepareStatement("insert into scoreboardresults (imageName, result, blackpixelcount) values (?, ?, ?)");
 	statement.setString(1, imageName);
