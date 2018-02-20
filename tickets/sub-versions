@@ -1,5 +1,5 @@
 sub-version-007: Refactor the access to the database to be all in one class"
-
+sub-version-008: Refactor the database with regards to results where there is a table for all values of the image, table for results of diff scans and table with image name
 
 
 
