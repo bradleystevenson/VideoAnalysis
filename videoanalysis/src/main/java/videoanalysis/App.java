@@ -50,6 +50,7 @@ public class App
 	ScoreboardAnswers.determineScoreboardEquation();
 	ScoreboardScanner.determineScoreboards(folderName);
 	*/
+	ColorRanges.determineColorRanges();
 	PlayParser.parsePlays(folderName);
 	ArrayList<Play> plays = PlayParser.getPlays(folderName);
 	for (Play play : plays) {

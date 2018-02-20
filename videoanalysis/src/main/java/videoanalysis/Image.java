@@ -16,7 +16,7 @@ public class Image {
 	int returnInt = 0;
 	for (int inx = 0; inx < pixels.length; inx++) {
 	    for (int iny = 0; iny < pixels[inx].length; iny++) {
-		if (ColorRanges.pixelIsBlack(pixels[inx][iny])) {
+		if (ColorRanges.pixelIsColor(pixels[inx][iny], "black")) {
 		    returnInt++;
 		}
 	    }

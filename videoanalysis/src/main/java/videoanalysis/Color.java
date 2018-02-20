@@ -5,7 +5,7 @@ import java.sql.*;
 public class Color {
 
     private String color;
-    private String databaseString = "dbc:sqlite:/Users/Bradley/Programs/VideoAnalysis/videoanalysis/database.db";
+    private String databaseString = "jdbc:sqlite:/Users/Bradley/Programs/VideoAnalysis/videoanalysis/database.db";
     private  Connection connection;
     private int blueColor;
     private int redColor;
@@ -15,6 +15,10 @@ public class Color {
     
     private void connect() throws Exception {
 	connection = DriverManager.getConnection(databaseString);
+    }
+
+    public boolean isColor(String colorCheck) {
+	return color.toLowerCase().equals(colorCheck.toLowerCase());
     }
 
     
