@@ -4,3 +4,10 @@ ticket-024: Write code that goes through all the strings from the plays and gets
 ticket-025: Create a class called CameraAngleScanner that takes in a play and gets all of its field sections (CHECK)
 ticket-026: Create a color class that takes in the input of a String, the color name (CHECK)
 ticket-027: Make a call that lists all of the tables names and get the color tables, so that we could build the color classes from that (CHECK)
+ticket-028: Make a class called tools
+ticket-029: Create a method that reads in a file and returns an ArrayList of Strings for the strings in the file
+ticket-030: Create a method that takes in the file name and an arraylist of strings and prints the strings into the file
+ticket-031: Replace all the reading and printing of files in various methods to be the one simply done by the methods in the Tools class
+
+
+
