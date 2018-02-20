@@ -14,6 +14,22 @@ public class Tools {
 
     private static Connection connection;
 
+    public static int calculateColor(String colorTable, String rgbValue) {
+	try {
+	    PreparedStatement statement = connection.prepareStatement("select avg(" + rgbValue + ") from " + colorTable + "pixels");
+	    ResultSet set = statement.executeQuery();
+	    set.next();
+	    int returnInt = set.getInt(1);
+	    set.close();
+	    statement.close();
+	    return returnInt;
+	} catch (Exception e) {
+	    System.out.println("Error determining colors");	    
+	    System.exit(1);
+	}
+	return -1;
+    }
+
     public static ArrayList<String> getColorTableNames() {
 	ArrayList<String> returnStrings = new ArrayList<String>();
 	try {
