@@ -75,17 +75,11 @@ public class ScoreboardAnswers {
 	int minFieldBlack = getMinFieldBlack();
 	int maxScoreboardBlack = getMaxScoreboardBlack();
 	int minScoreboardBlack = getMinScoreboardBlack();
-	System.out.println("maxFieldBlack: " + maxFieldBlack);
-	System.out.println("minFieldBlack: " + minFieldBlack);
-	System.out.println("maxScoreboardBlack: " + maxScoreboardBlack);
-	System.out.println("minScoreboardBlack: " + minScoreboardBlack);
 	if (maxFieldBlack < minScoreboardBlack) {
 	    blackCutoffValid = true;
 	    blackCutoffValue = (maxFieldBlack + minScoreboardBlack) / 2;
 	}
     }
-
-
     
     private static String getUpToLastSlash(String fileName) {
 	int inx = fileName.length() - 1;
@@ -144,8 +138,8 @@ public class ScoreboardAnswers {
 	    String imageNumber = convertIntToString(inx, maxDigits) + ".png";
 	    String imageName = getImageName(imageNumber);
 	    Image image = new Image(imageName);
-	    insertToDatabase(imageName, result, image.blackPixelCount());
 	    insertScoreboardResult(imageName, result);
+	    insertImageValues(imageName, image.blackPixelCount());
 	}
     }
 
@@ -153,6 +147,14 @@ public class ScoreboardAnswers {
 	PreparedStatement statement = connection.prepareStatement("insert into scoreboardresults (imageName, result) values (?, ?)");
 	statement.setString(1, imageName);
 	statement.setString(2, result);
+	statement.executeUpdate();
+	statement.close();
+    }
+
+    private static void insertImageValues(String imageName, int blackPixels) throws Exception {
+	PreparedStatement statement = connection.prepareStatement("insert into imageValues (imageName, blackpixelcount) values (?, ?)");
+	statement.setString(1, imageName);
+	statement.setInt(2, blackPixels);
 	statement.executeUpdate();
 	statement.close();
     }
