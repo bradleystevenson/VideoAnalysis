@@ -12,11 +12,11 @@ public class Image {
     private int height;
     private Pixel[][] pixels;
 
-    public int blackPixelCount() {
+    public int colorPixelCount(String color) {
 	int returnInt = 0;
 	for (int inx = 0; inx < pixels.length; inx++) {
 	    for (int iny = 0; iny < pixels[inx].length; iny++) {
-		if (ColorRanges.pixelIsColor(pixels[inx][iny], "black")) {
+		if (ColorRanges.pixelIsColor(pixels[inx][iny], color)) {
 		    returnInt++;
 		}
 	    }

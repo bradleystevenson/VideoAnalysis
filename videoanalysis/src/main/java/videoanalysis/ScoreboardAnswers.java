@@ -20,7 +20,7 @@ public class ScoreboardAnswers {
 
     public static String scoreboardScanner(Image image) {
 	if (blackCutoffValid) {
-	    int blackPixelCount = image.blackPixelCount();
+	    int blackPixelCount = image.colorPixelCount("black");
 	    if (blackPixelCount > blackCutoffValue) {
 		return "Scoreboard";
 	    }
@@ -139,7 +139,7 @@ public class ScoreboardAnswers {
 	    String imageName = getImageName(imageNumber);
 	    Image image = new Image(imageName);
 	    insertScoreboardResult(imageName, result);
-	    insertImageValues(imageName, image.blackPixelCount());
+	    insertImageValues(imageName, image.colorPixelCount("black"));
 	}
     }
 
