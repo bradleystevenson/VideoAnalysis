@@ -1,6 +1,6 @@
 ticket-032: Write a method that returns the list of table names
 ticket-033: Write a method that returns the average of a color of pixel
-ticket-034: Rewrite ScoreboardAnswers to use the new schema
+ticket-034: Rewrite ScoreboardAnswers to insert image and result in the scoreboard results table
 
 
 
