@@ -7,7 +7,7 @@ ticket-027: Make a call that lists all of the tables names and get the color tab
 ticket-028: Make a class called tools (CHECK)
 ticket-029: Create a method that reads in a file and returns an ArrayList of Strings for the strings in the file (CHECK)
 ticket-030: Create a method that takes in the file name and an arraylist of strings and prints the strings into the file (CHECK)
-ticket-031: Replace all the reading and printing of files in various methods to be the one simply done by the methods in the Tools class
+ticket-031: Replace all the reading and printing of files in various methods to be the one simply done by the methods in the Tools class (CHECK)
 
 
 
