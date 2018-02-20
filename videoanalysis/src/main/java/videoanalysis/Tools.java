@@ -3,6 +3,9 @@ package videoanalysis;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.io.PrintWriter;
+import java.io.FileWriter;
+
 
 public class Tools {
 
@@ -21,6 +24,19 @@ public class Tools {
 	    System.exit(1);
 	}
 	return returnStrings;
+    }
+
+    public static void printFile(String filePath, ArrayList<String> printStrings) {
+	try {
+	    PrintWriter out = new PrintWriter(new FileWriter(filePath));
+	    for (String string : printStrings) {
+		out.println(string);
+	    }
+	    out.close();
+	} catch (Exception e) {
+	    System.out.println("Error printing to file");
+	    System.exit(1);
+	}
     }
 
 }
