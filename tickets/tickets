@@ -3,7 +3,8 @@ ticket-033: Write a method that returns the average of a color of pixel (CHECK)
 ticket-034: Rewrite ScoreboardAnswers to insert image and result in the scoreboard results table (CHECK)
 ticket-035: Rewrite ScoreboardAnswers to insert the image data in the image data table (CHECK)
 ticket-036: Rewrite the image getBlackCount to instead take in a random string that returns if it matches that color (CHECK)
-
+ticket-037: Remove the use of java.sql packages in CompareImages
+ticket-038: Remove the use of java.sql packages in ScoreboardAnswers
 
 
 
