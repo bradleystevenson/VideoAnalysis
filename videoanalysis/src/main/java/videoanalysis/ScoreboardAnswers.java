@@ -3,20 +3,12 @@ package videoanalysis;
 import java.util.ArrayList;
 import java.io.File;
 import java.util.ArrayList;
-import java.sql.*;
-
 
 public class ScoreboardAnswers {
 
     private static String folderName;
-    private static String databaseString = "jdbc:sqlite:/Users/Bradley/Programs/VideoAnalysis/videoanalysis/database.db";
-    private static Connection connection;
     private static boolean blackCutoffValid = false;
     private static int blackCutoffValue;
-    
-    private static void connect() throws Exception{
-        connection = DriverManager.getConnection(databaseString);
-    }
 
     public static String scoreboardScanner(Image image) {
 	if (blackCutoffValid) {
@@ -70,7 +62,6 @@ public class ScoreboardAnswers {
     }
 
     public static void determineScoreboardEquation() throws Exception {
-	connect();
 	int maxFieldBlack = getMaxFieldBlack();
 	int minFieldBlack = getMinFieldBlack();
 	int maxScoreboardBlack = getMaxScoreboardBlack();
