@@ -22,43 +22,19 @@ public class ScoreboardAnswers {
     }
 
     private static int getMaxFieldBlack() throws Exception {
-	PreparedStatement statement = connection.prepareStatement("select max(blackpixelcount) from scoreboardresults where result like 'Field'");
-	ResultSet set = statement.executeQuery();
-	set.next();
-	int returnInt = set.getInt(1);
-	set.close();
-	statement.close();
-	return returnInt;
+	return Tools.getMaxFieldBlack();
     }
 
     private static int getMinFieldBlack() throws Exception {
-	PreparedStatement statement = connection.prepareStatement("select min(blackpixelcount) from scoreboardresults where result like 'Field'");
-	ResultSet set = statement.executeQuery();
-	set.next();
-	int returnInt = set.getInt(1);
-	set.close();
-	statement.close();
-	return returnInt;
+	return Tools.getMinFieldBlack();
     }
 
     private static int getMaxScoreboardBlack() throws Exception {
-	PreparedStatement statement = connection.prepareStatement("select max(blackpixelcount) from scoreboardresults where result like 'Scoreboard'");
-	ResultSet set = statement.executeQuery();
-	set.next();
-	int returnInt = set.getInt(1);
-	set.close();
-	statement.close();
-	return returnInt;
+	return Tools.getMaxScoreboardBlack();	
     }
 
     private static int getMinScoreboardBlack() throws Exception {
-	PreparedStatement statement = connection.prepareStatement("select min(blackpixelcount) from scoreboardresults where result like'Scoreboard'");
-	ResultSet set = statement.executeQuery();
-	set.next();
-	int returnInt = set.getInt(1);
-	set.close();
-	statement.close();
-	return returnInt;
+	return Tools.getMinScoreboardBlack();
     }
 
     public static void determineScoreboardEquation() throws Exception {
@@ -87,7 +63,7 @@ public class ScoreboardAnswers {
     }
     
     public static void parseFile(String fileName) throws Exception {
-	connect();
+
 	folderName = getUpToLastSlash(fileName);
 	ArrayList<String> lines = Tools.readFile(fileName);
 	int maxDigits = 0;
@@ -129,36 +105,10 @@ public class ScoreboardAnswers {
 	    String imageNumber = convertIntToString(inx, maxDigits) + ".png";
 	    String imageName = getImageName(imageNumber);
 	    Image image = new Image(imageName);
-	    insertScoreboardResult(imageName, result);
-	    insertImageValues(imageName, image.colorPixelCount("black"));
+	    Tools.insertImageValues(imageName, image.colorPixelCount("black"));
+	    Tools.insertResult("scoreboardresults", imageName, result);
 	}
     }
-
-    private static void insertScoreboardResult(String imageName, String result) throws Exception {
-	PreparedStatement statement = connection.prepareStatement("insert into scoreboardresults (imageName, result) values (?, ?)");
-	statement.setString(1, imageName);
-	statement.setString(2, result);
-	statement.executeUpdate();
-	statement.close();
-    }
-
-    private static void insertImageValues(String imageName, int blackPixels) throws Exception {
-	PreparedStatement statement = connection.prepareStatement("insert into imageValues (imageName, blackpixelcount) values (?, ?)");
-	statement.setString(1, imageName);
-	statement.setInt(2, blackPixels);
-	statement.executeUpdate();
-	statement.close();
-    }
-    
-    private static void insertToDatabase(String imageName, String result, int blackPixelCount) throws Exception {
-	PreparedStatement statement = connection.prepareStatement("insert into scoreboardresults (imageName, result, blackpixelcount) values (?, ?, ?)");
-	statement.setString(1, imageName);
-	statement.setString(2, result);
-	statement.setInt(3, blackPixelCount);
-	statement.executeUpdate();
-	statement.close();
-    }
-										 
     
     private static String getImageName(String searchString) throws Exception {
 	File folder = new File(folderName);

@@ -14,6 +14,75 @@ public class Tools {
 
     private static Connection connection;
 
+    public static int getMinScoreboardBlack() throws Exception {
+	PreparedStatement statement = connection.prepareStatement("select min(blackpixelcount) from scoreboardresults natural join imageValues where result like 'Scoreboard'");
+	ResultSet set = statement.executeQuery();
+	set.next();
+	int returnInt = set.getInt(1);
+	set.close();
+	statement.close();
+	return returnInt;
+
+    }
+
+    public static int getMaxFieldBlack() throws Exception {
+	PreparedStatement statement = connection.prepareStatement("select max(blackpixelcount) from imageValues natural join scoreboardresults where result like 'Field'");
+	ResultSet set = statement.executeQuery();
+	set.next();
+	int returnInt = set.getInt(1);
+	set.close();
+	statement.close();
+	return returnInt;
+    }
+
+    public static int getMinFieldBlack() throws Exception {
+	PreparedStatement statement = connection.prepareStatement("select min(blackpixelcount) from imageValues natural join scoreboardresults where result like 'Field'");
+	ResultSet set = statement.executeQuery();
+	set.next();
+	int returnInt = set.getInt(1);
+	set.close();
+	statement.close();
+	return returnInt;
+    }
+
+    public static int getMaxScoreboardBlack() throws Exception {
+	PreparedStatement statement = connection.prepareStatement("select max(blackpixelcount) from imageValues natural join scoreboardresults where result like 'Scoreboard'");
+	ResultSet set = statement.executeQuery();
+	set.next();
+	int returnInt = set.getInt(1);
+	set.close();
+	statement.close();
+	return returnInt;
+    }
+
+    
+    public static void insertImageValues(String imageName, int blackPixels) throws Exception {
+	try {
+	    PreparedStatement statement = connection.prepareStatement("insert into imageValues (imageName, blackpixelcount) values (?, ?)");
+	    statement.setString(1, imageName);
+	    statement.setInt(2, blackPixels);
+	    statement.executeUpdate();
+	    statement.close();
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    System.exit(1);
+	}
+    }
+    
+    public static void insertResult(String tableName, String imageName, String result) {
+	try {
+	    PreparedStatement statement = connection.prepareStatement("insert into " + tableName + " (imageName, result) values (?, ?)");
+	    statement.setString(1, imageName);
+	    statement.setString(2, result);
+	    statement.executeUpdate();
+	    statement.close();
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    System.exit(1);
+	}
+
+    }
+
     public static void insertPixelColor(String tableName, int red, int green, int blue) {
 	try {
 	    PreparedStatement statement = connection.prepareStatement("insert into " + tableName + " (red, green, blue) values (?, ?, ?");
