@@ -6,8 +6,21 @@ import java.io.File;
 
 public class CameraAngleAnswers {
 
-
     private static String folderName;
+
+    public static void determineCameraAngleEquation() throws Exception {
+	int maxSidelineBlack = Tools.getValuesOfImageType("max", "blackpixel", "Sideline");
+	int minSidelineBlack = Tools.getValuesOfImageType("min", "blackpixel", "Sideline");
+	int maxBehindBlack = Tools.getValuesOfImageType("max", "blackpixel", "Behind");
+	int minBehindBlack = Tools.getValuesOfImageType("min", "blackpixel", "Behind");
+	if (maxSidelineBlack < minBehindBlack) {
+	    System.out.println("Found answers");
+	} else if (maxBehindBlack < minSidelineBlack) {
+	    System.out.println("Found answers");
+	} else {
+	    System.out.println("No answers");
+	}
+    }
     
     public static String getUpToLastSlash(String fileName) {
 	int inx = fileName.length() - 1;

@@ -48,9 +48,9 @@ public class App
 		//ScoreboardAnswers.parseFile(file.toString());
 	    }
 	}
-	ScoreboardAnswers.determineScoreboardEquation();
-	ScoreboardScanner.determineScoreboards(folderName);
 	*/
+	ScoreboardAnswers.determineScoreboardEquation();
+	CameraAngleAnswers.determineCameraAngleEquation();
 	PlayParser.parsePlays(folderName);
 	ArrayList<Play> plays = PlayParser.getPlays(folderName);
 	for (Play play : plays) {
