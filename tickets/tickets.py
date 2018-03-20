@@ -44,7 +44,7 @@ if __name__ == '__main__':
         if ".py" not in file and "closed" not in file:
             clean_file(file)
 
-    files = glob.glob("*versions*")
+    files = glob.glob("*version*")
     for file in files:
         if "closed" not in file:
             clean_file(file)
