@@ -1,5 +1,5 @@
-
-
+ticket-043: Create a class similar to ScoreboardAnswers but for CameraAngleScanner so that you can put the results of CameraAngleScanner into the appropriate class
+ticket-044: Create a method in CameraAngleAnswers that allows you to determine the equation for camera angles
 
 
 
