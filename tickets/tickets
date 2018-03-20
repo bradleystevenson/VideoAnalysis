@@ -1,5 +1,5 @@
 ticket-039: Refactor the getting count of color pixels in the Tools class
 ticket-041: Move all the code that deals with database to a file in tools that is dedicated to database
-ticket-042: Move all the code that deals with reading and writing a file to a file in tools dedicated to files
+ticket-042: Move all the code that deals with reading and writing a file to a file in tools dedicated to files (CHECK)
 
 
