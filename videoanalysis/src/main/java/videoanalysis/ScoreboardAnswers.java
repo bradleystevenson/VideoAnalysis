@@ -38,10 +38,10 @@ public class ScoreboardAnswers {
     }
 
     public static void determineScoreboardEquation() throws Exception {
-	int maxFieldBlack = getMaxFieldBlack();
-	int minFieldBlack = getMinFieldBlack();
-	int maxScoreboardBlack = getMaxScoreboardBlack();
-	int minScoreboardBlack = getMinScoreboardBlack();
+	int maxFieldBlack = Tools.getValuesOfImageType("max", "blackpixels", "Field");
+	int minFieldBlack = Tools.getValuesOfImageType("min", "blackpixels", "Field");
+	int maxScoreboardBlack = Tools.getValuesOfImageType("max", "blackpixels", "Scoreboard");
+	int minScoreboardBlack = Tools.getValuesOfImageType("min", "blackpixels", "Scoreboard");
 	if (maxFieldBlack < minScoreboardBlack) {
 	    blackCutoffValid = true;
 	    blackCutoffValue = (maxFieldBlack + minScoreboardBlack) / 2;
