@@ -2,5 +2,5 @@ ticket-043: Create a class similar to ScoreboardAnswers but for CameraAngleScann
 ticket-044: Create a method in CameraAngleAnswers that allows you to determine the equation for camera angles (CHECK)
 ticket-045: Create a class called Answers that will do all the calculations on an image
 ticket-046: Update the previous answers classes to work with the new Answers class
-
+ticket-047: Create a new flag that works hanldes whether an image should be calculated or not
 
