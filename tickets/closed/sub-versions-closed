@@ -13,3 +13,4 @@ sub-version-006: Refactor the reading and writing of text files (CHECK)
 sub-version-007: Refactor the access to the database to be all in one class" (CHECK)
 
 sub-version-008: Refactor the database with regards to results where there is a table for all values of the image, table for results of diff scans and table with image name (CHECK)
+
