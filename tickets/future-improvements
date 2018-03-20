@@ -1,0 +1,2 @@
+future-improvement-001: Potentially move all the flags into its own little sub class so that we can make them objects
+future-improvement-002: Refactor the Answers classes so all mutual classes are the same
