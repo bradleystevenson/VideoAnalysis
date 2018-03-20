@@ -40,3 +40,7 @@ ticket-036: Rewrite the image getBlackCount to instead take in a random string t
 ticket-037: Remove the use of java.sql packages in CompareImages (CHECK)
 ticket-038: Remove the use of java.sql packages in ScoreboardAnswers (CHECK)
 ticket-040: Create a package called tools to hold a subdivision of the tools class (CHECK)
+
+ticket-039: Refactor the getting count of color pixels in the Tools class (CHECK)
+ticket-041: Move all the code that deals with database to a file in tools that is dedicated to database (CHECK)
+ticket-042: Move all the code that deals with reading and writing a file to a file in tools dedicated to files (CHECK)

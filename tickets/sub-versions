@@ -1,4 +1,4 @@
-sub-version-008: Refactor the database with regards to results where there is a table for all values of the image, table for results of diff scans and table with image name (CHECK)
+
 
 
 
