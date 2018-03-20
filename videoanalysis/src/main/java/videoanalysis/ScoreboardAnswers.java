@@ -21,22 +21,6 @@ public class ScoreboardAnswers {
 	return null;
     }
 
-    private static int getMaxFieldBlack() throws Exception {
-	return Tools.getMaxFieldBlack();
-    }
-
-    private static int getMinFieldBlack() throws Exception {
-	return Tools.getMinFieldBlack();
-    }
-
-    private static int getMaxScoreboardBlack() throws Exception {
-	return Tools.getMaxScoreboardBlack();	
-    }
-
-    private static int getMinScoreboardBlack() throws Exception {
-	return Tools.getMinScoreboardBlack();
-    }
-
     public static void determineScoreboardEquation() throws Exception {
 	int maxFieldBlack = Tools.getValuesOfImageType("max", "blackpixels", "Field");
 	int minFieldBlack = Tools.getValuesOfImageType("min", "blackpixels", "Field");
