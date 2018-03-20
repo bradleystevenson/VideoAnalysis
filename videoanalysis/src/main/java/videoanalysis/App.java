@@ -25,11 +25,12 @@ public class App
 	if (colorFlag) {
 	    CompareImages.compareImages(folderName);
 	}
+	ColorRanges.determineColorRanges();
 	if (scoreboardFlag) {
 	    ScoreboardAnswers.parseFile(folderName + "/ScoreboardAnswers.txt");
 	}
 	if (angleFlag) {
-	    
+	    CameraAngleAnswers.parseFile(folderName + "/CameraAngleAnswers.txt");
 	}
 	/*
 	String folderName = args[0];
@@ -50,7 +51,6 @@ public class App
 	ScoreboardAnswers.determineScoreboardEquation();
 	ScoreboardScanner.determineScoreboards(folderName);
 	*/
-	ColorRanges.determineColorRanges();
 	PlayParser.parsePlays(folderName);
 	ArrayList<Play> plays = PlayParser.getPlays(folderName);
 	for (Play play : plays) {
