@@ -6,6 +6,19 @@ import java.io.File;
 
 public class Answers {
 
+    public static void calculateImageValues(String folderName) throws Exception {
+	File folder = new File(folderName);
+	File[] files = folder.listFiles();
+	for (File file : files) {
+	    if (file.toString().endsWith(".png")) {
+		Image image = new Image(file.toString());
+		Tools.insertImageValues(file.toString(), image.colorPixelCount("black"));		
+	    }
+
+	}
+
+    }
+
     private static void parseFile(String fileName, String tableName) throws Exception {
 	String folderName = getUpToLastSlash(fileName);
 	ArrayList<String> lines = Tools.readFile(fileName);

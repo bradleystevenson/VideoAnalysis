@@ -12,6 +12,7 @@ public class App
     private static boolean colorFlag = false;
     private static boolean scoreboardFlag = false;
     private static boolean angleFlag = false;
+    private static boolean imageFlag = false;
     
     public static void main( String[] args ) throws Exception
     {
@@ -32,6 +33,10 @@ public class App
 	if (angleFlag) {
 	    CameraAngleAnswers.parseFile(folderName + "/CameraAngleAnswers.txt");
 	}
+	if (imageFlag) {
+	    Answers.calculateImageValues(folderName);
+	}
+	
 	/*
 	String folderName = args[0];
 	/* CompareImages.compareImages(folderName);
@@ -68,6 +73,9 @@ public class App
 	if (inputLine.contains("a")) {
 	    angleFlag = true;
 	}
+	if (inputLine.contains("i")) {
+	    imageFlag = true;
+	}	    
     }
 
     private static int indexOfFile(String[] args) {
