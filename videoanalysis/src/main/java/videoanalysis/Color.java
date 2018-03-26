@@ -7,6 +7,10 @@ public class Color {
     private int redColor;
     private int greenColor;
 
+    public String getColor() {
+	return color;
+    }
+    
     public boolean isColor(String colorCheck) {
 	return color.toLowerCase().equals(colorCheck.toLowerCase());
     }

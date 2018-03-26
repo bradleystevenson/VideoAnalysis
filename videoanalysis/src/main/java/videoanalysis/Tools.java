@@ -6,6 +6,19 @@ import java.util.ArrayList;
 
 public class Tools {
 
+    public static void dropImageValuesTable() {
+	DatabaseTools.dropImageValuesTable();
+    }
+
+    public static void createImageValuesTable(ArrayList<Color> colors) {
+	DatabaseTools.createImageValuesTable(colors);
+    }
+	   
+    
+    public static ArrayList<String> getImageTableFields() {
+	return DatabaseTools.getImageTableFields();
+    }
+
     public static int getValuesOfImageType(String minOrMax, String colorString, String resultString) throws Exception {
 	return DatabaseTools.getValuesOfImageType(minOrMax, colorString, resultString);
     }

@@ -7,6 +7,10 @@ public class ColorRanges {
     private static Color black;
     private static ArrayList<Color> colors;
 
+    public static ArrayList<Color> getColors() {
+	return colors;
+    }
+    
     public static boolean pixelIsColor(Pixel pixel, String colorString) {
 	for (Color color : colors) {
 	    if (color.isColor(colorString)) {

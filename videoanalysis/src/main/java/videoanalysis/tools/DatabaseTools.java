@@ -4,13 +4,48 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
 
 public class DatabaseTools {
 
     private static Connection connection;
 
+    public static void createImageValuesTable(ArrayList<Color> colors) {
+	
 
+    }
+
+    public static void dropImageValuesTable() {
+	try {
+	    PreparedStatement statement = connection.prepareStatement("DROP TABLE imageValues");
+	    statement.executeUpdate();
+	    statement.close();
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    System.exit(1);
+	}
+    }
+
+    public static ArrayList<String> getImageTableFields() {
+	ArrayList<String> returnStrings = new ArrayList<String>();
+	try {
+	    
+	    PreparedStatement statement = connection.prepareStatement("select * from imageValues");
+	    ResultSet set = statement.executeQuery();
+	    ResultSetMetaData rsmd = set.getMetaData();
+	    int columnCount = rsmd.getColumnCount();
+	    for (int inx = 1; inx <= columnCount; inx++) {
+		returnStrings.add(rsmd.getColumnName(inx));
+	    }
+	    return returnStrings;
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    System.exit(1);
+	}
+	return returnStrings;
+    }
+	
     public static int getValuesOfImageType(String minOrMax, String colorString, String resultString) throws Exception {
 	PreparedStatement statement = connection.prepareStatement("select " + minOrMax + "(" + colorString + "count) from scoreboardresults natural join imageValues where result like '" + resultString + "'");
 	ResultSet set = statement.executeQuery();

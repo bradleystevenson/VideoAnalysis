@@ -6,7 +6,31 @@ import java.io.File;
 
 public class Answers {
 
+    private static boolean hasPixelCount(String color, ArrayList<String> columnStrings) {
+	for (String columnName : columnStrings) {
+	    if (columnName.toLowerCase().equals(color + "pixelcount")) {
+		return true;
+	    }
+	}
+	return false;
+    }
+    
+    private static boolean checkTable() {
+	ArrayList<Color> colors = ColorRanges.getColors();
+	ArrayList<String> columnStrings = Tools.getImageTableFields();
+	for (Color color : colors) {
+	    if (!hasPixelCount(color.getColor(), columnStrings)) {
+		return false;
+	    }
+	}
+	return true;
+    }
+    
     public static void calculateImageValues(String folderName) throws Exception {
+	if (!checkTable()) {
+	    Tools.dropImageValuesTable();
+	    Tools.createImageValuesTable(ColorRanges.getColors());
+	}
 	File folder = new File(folderName);
 	File[] files = folder.listFiles();
 	for (File file : files) {
