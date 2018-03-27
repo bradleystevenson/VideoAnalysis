@@ -6,14 +6,27 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
+import videoanalysis.Color;
 
 public class DatabaseTools {
 
     private static Connection connection;
 
     public static void createImageValuesTable(ArrayList<Color> colors) {
-	
+	try {
+	    String string = "CREATE TABLE imageValues (imageName varchar, ";
+	    for (int inx = 0; inx < colors.size() - 1; inx++) {
+		string = string + colors.get(inx).getColor() + "pixelcount integer,";
+	    }
+	    string = string + colors.get(colors.size() - 1).getColor() + "pixelcount integer)";
+	    PreparedStatement statement = connection.prepareStatement(string);
+	    statement.executeUpdate();
+	    statement.close();
 
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    System.exit(1);
+	}
     }
 
     public static void dropImageValuesTable() {
@@ -38,6 +51,8 @@ public class DatabaseTools {
 	    for (int inx = 1; inx <= columnCount; inx++) {
 		returnStrings.add(rsmd.getColumnName(inx));
 	    }
+	    set.close();
+	    statement.close();
 	    return returnStrings;
 	} catch (Exception e) {
 	    e.printStackTrace();
