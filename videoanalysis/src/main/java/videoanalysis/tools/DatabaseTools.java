@@ -12,6 +12,27 @@ public class DatabaseTools {
 
     private static Connection connection;
 
+    public static void insertImageValues(String imageName, ArrayList<String> columns, ArrayList<Integer> values) {
+	try {
+	    String string = "INSERT INTO imageValues (";
+	    for (String column : columns) {
+		string = string + column + ", ";
+	    }
+	    string = string + "imageName) values (";
+	    for (int value : values) {
+		string = string + value + ", ";
+	    }
+	    string = string + "\"" + imageName + "\")";
+	    System.out.println(string);
+	    PreparedStatement statement = connection.prepareStatement(string);
+	    statement.executeUpdate();
+	    statement.close();
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    System.exit(1);
+	}
+    }
+    
     public static void createImageValuesTable(ArrayList<Color> colors) {
 	try {
 	    String string = "CREATE TABLE imageValues (imageName varchar, ";

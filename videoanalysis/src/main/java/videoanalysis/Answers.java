@@ -36,11 +36,17 @@ public class Answers {
 	for (File file : files) {
 	    if (file.toString().endsWith(".png")) {
 		Image image = new Image(file.toString());
-		Tools.insertImageValues(file.toString(), image.colorPixelCount("black"));		
+		ArrayList<Color> colors = ColorRanges.getColors();
+		ArrayList<String> strings = new ArrayList<String>();
+		ArrayList<Integer> values = new ArrayList<Integer>();
+		for (Color color : colors) {
+		    strings.add(color.getColor() + "pixelcount");
+		    values.add(image.colorPixelCount(color.getColor()));
+		}
+		//		Tools.insertImageValues(file.toString(), image.colorPixelCount("black"));
+		Tools.insertImageValues(file.toString(), strings, values);
 	    }
-
 	}
-
     }
 
     private static void parseFile(String fileName, String tableName) throws Exception {

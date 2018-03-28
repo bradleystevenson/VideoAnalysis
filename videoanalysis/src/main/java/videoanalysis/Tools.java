@@ -6,6 +6,10 @@ import java.util.ArrayList;
 
 public class Tools {
 
+    public static void insertImageValues(String imageName, ArrayList<String> columns, ArrayList<Integer> values) {
+	DatabaseTools.insertImageValues(imageName, columns, values);
+    }
+
     public static void dropImageValuesTable() {
 	DatabaseTools.dropImageValuesTable();
     }
