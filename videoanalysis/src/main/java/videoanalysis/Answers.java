@@ -32,6 +32,15 @@ public class Answers {
 	}
 	return false;
     }
+
+    private static boolean hasVerticalCount(String color, ArrayList<String> columnStrings) {
+	for (String columnName : columnStrings) {
+	    if (columnName.toLowerCase().equals(color + "verticalcount")) {
+		return true;
+	    }
+	}
+	return false;
+    }
     
     private static boolean checkTable() {
 	ArrayList<Color> colors = ColorRanges.getColors();
@@ -44,6 +53,9 @@ public class Answers {
 		return false;
 	    }
 	    if (!hasHorizontalLine(color.getColor(), columnStrings)) {
+		return false;
+	    }
+	    if (!hasVerticalCount(color.getColor(), columnStrings)) {
 		return false;
 	    }
 	}
@@ -70,6 +82,8 @@ public class Answers {
 		    values.add(image.verticalLine(color.getColor()));
 		    strings.add(color.getColor() + "horizontalline");
 		    values.add(image.horizontalLine(color.getColor()));
+		    strings.add(color.getColor() + "verticalcount");
+		    values.add(image.verticalCount(color.getColor()));
 		}
 		//		Tools.insertImageValues(file.toString(), image.colorPixelCount("black"));
 		Tools.insertImageValues(file.toString(), strings, values);

@@ -12,10 +12,23 @@ public class Image {
     private int height;
     private Pixel[][] pixels;
 
+    
+
     public int horizontalLine(String color) {
 	int returnInt = 0;
 	for (int iny = 0; iny < height; iny++) {
 	    int current = horizontalLine(color, iny);
+	    if (current > returnInt) {
+		returnInt = current;
+	    }
+	}
+	return returnInt;
+    }
+
+    public int verticalCount(String color) {
+	int returnInt = 0;
+	for (int inx = 0; inx < width; inx++) {
+	    int current = verticalCount(color, inx);
 	    if (current > returnInt) {
 		returnInt = current;
 	    }
@@ -45,6 +58,16 @@ public class Image {
 		    returnInt = current;
 		}
 		current = 0;
+	    }
+	}
+	return returnInt;
+    }
+
+    private int verticalCount(String color, int x) {
+	int returnInt = 0;
+	for (int iny = 0; iny < height; iny++) {
+	    if (ColorRanges.pixelIsColor(pixels[x][iny], color)) {
+		returnInt++;
 	    }
 	}
 	return returnInt;

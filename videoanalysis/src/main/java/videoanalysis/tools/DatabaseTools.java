@@ -55,9 +55,9 @@ public class DatabaseTools {
 	try {
 	    String string = "CREATE TABLE imageValues (imageName varchar, ";
 	    for (int inx = 0; inx < colors.size() - 1; inx++) {
-		string = string + colors.get(inx).getColor() + "pixelcount integer, " + colors.get(inx).getColor() + "verticalline integer, " + colors.get(inx).getColor() +"horizontalline integer, ";
+		string = string + colors.get(inx).getColor() + "pixelcount integer, " + colors.get(inx).getColor() + "verticalline integer, " + colors.get(inx).getColor() +"horizontalline integer, " + colors.get(inx).getColor() + "verticalcount integer, ";
 	    }
-	    string = string + colors.get(colors.size() - 1).getColor() + "verticalline integer, " + colors.get(colors.size() - 1).getColor() + "pixelcount integer, " + colors.get(colors.size() -1).getColor() + "horizontalline integer)";
+	    string = string + colors.get(colors.size() - 1).getColor() + "verticalline integer, " + colors.get(colors.size() - 1).getColor() + "pixelcount integer, " + colors.get(colors.size() -1).getColor() + "horizontalline integer, " + colors.get(colors.size() - 1).getColor() + "verticalcount integer)";
 	    PreparedStatement statement = connection.prepareStatement(string);
 	    statement.executeUpdate();
 	    statement.close();
