@@ -9,5 +9,5 @@ ticket-050: Update the image value method to work with the new table in ticket-0
 ticket-051: Write a method that solves for values based on the new values in teh table (CHECK)
 ticket-052: Add a method that adds longest vertical line to the imageValues (CHECK)
 ticket-053: Add a method that adds longest horizontal line to the imageValues (CHECK)
-ticket-054: Add a method that adds vertical count to the imageValues
+ticket-054: Add a method that adds vertical count to the imageValues (CHECK)
 ticket-055: Add a method that adds horizontal count to the imageValues
