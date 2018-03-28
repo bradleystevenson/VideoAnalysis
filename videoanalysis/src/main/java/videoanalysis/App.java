@@ -55,7 +55,12 @@ public class App
 	}
 	*/
 	ScoreboardAnswers.determineScoreboardEquation();
-	CameraAngleAnswers.determineCameraAngleEquation();
+	Equation angle = new Equation("cameraangleresults");
+	if (angle.foundEquation()) {
+	    System.out.println("FOUND EQUATION");
+	} else {
+	    System.out.println("ERROR NO EQUATION");
+	}
 	PlayParser.parsePlays(folderName);
 	ArrayList<Play> plays = PlayParser.getPlays(folderName);
 	for (Play play : plays) {

@@ -12,6 +12,24 @@ public class DatabaseTools {
 
     private static Connection connection;
 
+    public static ArrayList<String> getResultTypes(String tableName) {
+	ArrayList<String> returnStrings = new ArrayList<String>();
+	try {
+	    PreparedStatement statement = connection.prepareStatement("SELECT distinct(result) from " + tableName);
+	    ResultSet set = statement.executeQuery();
+	    while (set.next()) {
+		returnStrings.add(set.getString(1));
+	    }
+	    set.close();
+	    statement.close();
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    System.exit(1);
+	}
+	return returnStrings;
+    }
+    
+    
     public static void insertImageValues(String imageName, ArrayList<String> columns, ArrayList<Integer> values) {
 	try {
 	    String string = "INSERT INTO imageValues (";
@@ -83,7 +101,7 @@ public class DatabaseTools {
     }
 	
     public static int getValuesOfImageType(String minOrMax, String colorString, String resultString) throws Exception {
-	PreparedStatement statement = connection.prepareStatement("select " + minOrMax + "(" + colorString + "count) from scoreboardresults natural join imageValues where result like '" + resultString + "'");
+	PreparedStatement statement = connection.prepareStatement("select " + minOrMax + "(" + colorString + ") from scoreboardresults natural join imageValues where result like '" + resultString + "'");
 	ResultSet set = statement.executeQuery();
 	set.next();
 	int returnInt = set.getInt(1);

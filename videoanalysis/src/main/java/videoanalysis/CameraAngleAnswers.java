@@ -9,10 +9,10 @@ public class CameraAngleAnswers {
     private static String folderName;
 
     public static void determineCameraAngleEquation() throws Exception {
-	int maxSidelineBlack = Tools.getValuesOfImageType("max", "blackpixel", "Sideline");
-	int minSidelineBlack = Tools.getValuesOfImageType("min", "blackpixel", "Sideline");
-	int maxBehindBlack = Tools.getValuesOfImageType("max", "blackpixel", "Behind");
-	int minBehindBlack = Tools.getValuesOfImageType("min", "blackpixel", "Behind");
+	int maxSidelineBlack = Tools.getValuesOfImageType("max", "blackpixelcount", "Sideline");
+	int minSidelineBlack = Tools.getValuesOfImageType("min", "blackpixelcount", "Sideline");
+	int maxBehindBlack = Tools.getValuesOfImageType("max", "blackpixelcount", "Behind");
+	int minBehindBlack = Tools.getValuesOfImageType("min", "blackpixelcount", "Behind");
 	if (maxSidelineBlack < minBehindBlack) {
 	    System.out.println("Found answers");
 	} else if (maxBehindBlack < minSidelineBlack) {
