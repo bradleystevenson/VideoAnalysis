@@ -12,6 +12,17 @@ public class Image {
     private int height;
     private Pixel[][] pixels;
 
+    public int horizontalLine(String color) {
+	int returnInt = 0;
+	for (int iny = 0; iny < height; iny++) {
+	    int current = horizontalLine(color, iny);
+	    if (current > returnInt) {
+		returnInt = current;
+	    }
+	}
+	return returnInt;
+    }
+
     public int verticalLine(String color) {
 	int returnInt = 0;
 	for (int inx = 0; inx < width; inx++) {
@@ -23,6 +34,22 @@ public class Image {
 	return returnInt;
     }
 
+    private int horizontalLine(String color, int y) {
+	int returnInt = 0;
+	int current = 0;
+	for (int inx = 0; inx < width; inx++) {
+	    if (ColorRanges.pixelIsColor(pixels[inx][y], color)) {
+		current++;
+	    } else {
+		if (current > returnInt) {
+		    returnInt = current;
+		}
+		current = 0;
+	    }
+	}
+	return returnInt;
+    }
+    
     private int verticalLine(String color, int x) {
 	int returnInt = 0;
 	int current = 0;
