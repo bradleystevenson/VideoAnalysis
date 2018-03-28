@@ -12,7 +12,16 @@ public class Image {
     private int height;
     private Pixel[][] pixels;
 
-    
+    public int horizontalCount(String color) {
+	int returnInt = 0;
+	for (int iny = 0; iny < height; iny++) {
+	    int current = horizontalCount(color, iny);
+	    if (current > returnInt) {
+		returnInt = current;
+	    }
+	}
+	return returnInt;
+    }
 
     public int horizontalLine(String color) {
 	int returnInt = 0;
@@ -67,6 +76,16 @@ public class Image {
 	int returnInt = 0;
 	for (int iny = 0; iny < height; iny++) {
 	    if (ColorRanges.pixelIsColor(pixels[x][iny], color)) {
+		returnInt++;
+	    }
+	}
+	return returnInt;
+    }
+
+    private int horizontalCount(String color, int y) {
+	int returnInt = 0;
+	for (int inx = 0; inx < width; inx++) {
+	    if (ColorRanges.pixelIsColor(pixels[inx][y], color)) {
 		returnInt++;
 	    }
 	}
