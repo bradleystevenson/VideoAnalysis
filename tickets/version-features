@@ -1,3 +1,3 @@
 version-feature-005: Write code that creates a table for the results about which angle the field photo was taken from
 version-feature-006: Refactor the Answers class so that there is one class that does almost all of the input and reading of files (CHECK)
-version-feature-007: Create a bunch more facts in imageValues
+version-feature-007: Create a bunch more facts in imageValues (CHECK)
