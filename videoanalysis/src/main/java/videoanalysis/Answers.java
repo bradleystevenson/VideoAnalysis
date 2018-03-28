@@ -14,12 +14,24 @@ public class Answers {
 	}
 	return false;
     }
+
+    private static boolean hasVerticalLine(String color, ArrayList<String> columnStrings) {
+	for (String columnName : columnStrings) {
+	    if (columnName.toLowerCase().equals(color + "verticalline")) {
+		return true;
+	    }
+	}
+	return false;
+    }
     
     private static boolean checkTable() {
 	ArrayList<Color> colors = ColorRanges.getColors();
 	ArrayList<String> columnStrings = Tools.getImageTableFields();
 	for (Color color : colors) {
 	    if (!hasPixelCount(color.getColor(), columnStrings)) {
+		return false;
+	    }
+	    if (!hasVerticalLine(color.getColor(), columnStrings)) {
 		return false;
 	    }
 	}
@@ -42,6 +54,8 @@ public class Answers {
 		for (Color color : colors) {
 		    strings.add(color.getColor() + "pixelcount");
 		    values.add(image.colorPixelCount(color.getColor()));
+		    strings.add(color.getColor() + "verticalline");
+		    values.add(image.verticalLine(color.getColor()));
 		}
 		//		Tools.insertImageValues(file.toString(), image.colorPixelCount("black"));
 		Tools.insertImageValues(file.toString(), strings, values);
