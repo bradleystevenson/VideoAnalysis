@@ -11,3 +11,7 @@ ticket-052: Add a method that adds longest vertical line to the imageValues (CHE
 ticket-053: Add a method that adds longest horizontal line to the imageValues (CHECK)
 ticket-054: Add a method that adds vertical count to the imageValues (CHECK)
 ticket-055: Add a method that adds horizontal count to the imageValues (CHECK)
+ticket-056: Add a 3 pixel horizontal count to imageValues
+ticket-057: Add a 3 pixel vertical count to imageValues
+ticket-058: Add a 5 pixel horizontal count to imageValues
+ticket-059: Add a 5 pixel vertical count to imageValues
