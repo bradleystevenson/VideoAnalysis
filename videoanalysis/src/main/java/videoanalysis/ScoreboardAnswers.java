@@ -89,7 +89,6 @@ public class ScoreboardAnswers {
 	    String imageNumber = convertIntToString(inx, maxDigits) + ".png";
 	    String imageName = getImageName(imageNumber);
 	    Image image = new Image(imageName);
-	    Tools.insertImageValues(imageName, image.colorPixelCount("black"));
 	    Tools.insertResult("scoreboardresults", imageName, result);
 	}
     }

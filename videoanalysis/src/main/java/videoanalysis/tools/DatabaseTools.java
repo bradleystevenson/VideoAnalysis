@@ -99,7 +99,19 @@ public class DatabaseTools {
 	}
 	return returnStrings;
     }
-	
+
+    public static int getValuesOfImageType(String minOrMax, String colorString, String resultString, String tableName) throws Exception {
+        PreparedStatement statement = connection.prepareStatement("select " + minOrMax + "(" + colorString + ") from " + tableName + " natural join imageValues where result like '" + resultString + "'");
+        ResultSet set = statement.executeQuery();
+        set.next();
+        int returnInt = set.getInt(1);
+        set.close();
+        statement.close();
+        return returnInt;
+    }
+
+
+    
     public static int getValuesOfImageType(String minOrMax, String colorString, String resultString) throws Exception {
 	PreparedStatement statement = connection.prepareStatement("select " + minOrMax + "(" + colorString + ") from scoreboardresults natural join imageValues where result like '" + resultString + "'");
 	ResultSet set = statement.executeQuery();

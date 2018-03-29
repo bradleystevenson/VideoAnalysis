@@ -78,7 +78,6 @@ public class CameraAngleAnswers {
 	    String imageNumber = convertIntToString(inx, maxDigits) + ".png";
 	    String imageName = getImageName(imageNumber);
 	    Image image = new Image(imageName);
-	    Tools.insertImageValues(imageName, image.colorPixelCount("black"));
 	    Tools.insertResult("cameraangleresults", imageName, result);
 
 	}

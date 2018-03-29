@@ -28,6 +28,11 @@ public class Tools {
 	return DatabaseTools.getImageTableFields();
     }
 
+    public static int getValuesOfImageType(String minOrMax, String colorString, String resultString, String tableName) throws Exception {
+        return DatabaseTools.getValuesOfImageType(minOrMax, colorString, resultString, tableName);
+    }
+
+
     public static int getValuesOfImageType(String minOrMax, String colorString, String resultString) throws Exception {
 	return DatabaseTools.getValuesOfImageType(minOrMax, colorString, resultString);
     }
