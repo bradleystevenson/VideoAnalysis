@@ -12,6 +12,29 @@ public class Image {
     private int height;
     private Pixel[][] pixels;
 
+    public int threeHorizontalCount(String color) {
+	int returnInt = 0;
+	for (int iny = 0; iny < height - 3; iny++) {
+	    int current = threeHorizontalCount(color, iny);
+	    if (current > returnInt) {
+		returnInt = current;
+	    }	    
+	}
+	return returnInt;
+    }
+
+    private int threeHorizontalCount(String color, int y) {
+	int returnInt = 0;
+	for (int iny = y; iny <= y + 2; iny++) {
+	    for (int inx = 0; inx < width; inx++) {
+		if (ColorRanges.pixelIsColor(pixels[inx][iny], color)) {
+		    returnInt++;
+		}
+	    }
+	}
+	return returnInt;
+    }
+    
     public int horizontalCount(String color) {
 	int returnInt = 0;
 	for (int iny = 0; iny < height; iny++) {
