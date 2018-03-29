@@ -23,6 +23,17 @@ public class Image {
 	return returnInt;
     }
 
+    public int fiveHorizontalCount(String color) {
+	int returnInt = 0;
+	for (int iny = 0; iny < height - 5; iny++) {
+	    int current = fiveHorizontalCount(color, iny);
+	    if (current > returnInt) {
+		returnInt = current;
+	    }
+	}
+	return returnInt;
+    }
+
     public int threeHorizontalCount(String color) {
 	int returnInt = 0;
 	for (int iny = 0; iny < height - 3; iny++) {
@@ -50,6 +61,18 @@ public class Image {
 	int returnInt = 0;
 	for (int iny = y; iny <= y + 2; iny++) {
 	    for (int inx = 0; inx < width; inx++) {
+		if (ColorRanges.pixelIsColor(pixels[inx][iny], color)) {
+		    returnInt++;
+		}
+	    }
+	}
+	return returnInt;
+    }
+
+    private int fiveHorizontalCount(String color, int y) {
+	int returnInt = 0;
+	for (int iny = y; iny <= y + 4; iny++) {
+	    for (int inx = 0; iny < width; inx++) {
 		if (ColorRanges.pixelIsColor(pixels[inx][iny], color)) {
 		    returnInt++;
 		}
