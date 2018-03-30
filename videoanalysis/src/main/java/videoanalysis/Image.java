@@ -12,6 +12,44 @@ public class Image {
     private int height;
     private Pixel[][] pixels;
 
+    public int threeHorizontalLine(String color) {
+	int returnInt = 0;
+	for (int inx = 0; inx < width - 3; inx++) {
+	    int current = threeHorizontalLine(color, inx);
+	    if (current > returnInt) {
+		returnInt = current;
+	    }
+	}
+	return returnInt;	
+    }
+
+
+
+    private int threeHorizontalLine(String color, int x) {
+	int returnInt = 0;
+	int current = 0;
+	for (int iny = 0; iny < height; iny++) {
+	    boolean match = false;
+	    for (int inx = x; inx < x + 3; inx++) {
+		if (ColorRanges.pixelIsColor(pixels[inx][iny], color)) {
+		    match = true;
+		}
+	    }
+	    if (match) {
+		current++;
+	    } else {
+		if (current > returnInt) {
+		    returnInt = current;
+		}
+		current = 0;
+	    }
+	}
+	if (current > returnInt) {
+	    returnInt = current;
+	}
+	return returnInt;
+    }
+    
     public int threeVerticalCount(String color) {
 	int returnInt = 0;
 	for (int inx = 0; inx < width - 3; inx++) {
@@ -161,6 +199,9 @@ public class Image {
 		current = 0;
 	    }
 	}
+	if (current > returnInt) {
+	    returnInt = current;
+	}
 	return returnInt;
     }
 
@@ -196,6 +237,9 @@ public class Image {
 		}
 		current = 0;
 	    }		
+	}
+	if (current > returnInt) {
+	    returnInt = current;
 	}
 	return returnInt;
     }
