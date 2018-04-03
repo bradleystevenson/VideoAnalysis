@@ -22,8 +22,38 @@ public class Image {
 	}
 	return returnInt;	
     }
+    
+    public int fiveHorizontalLine(String color) {
+	int returnInt = 0;
+	for (int inx = 0; inx < width - 5; inx++) {
+	    int current = fiveHorizontalLine(color, inx);
+	    if (current > returnInt) {
+		returnInt = current;
+	    }
+	}
+	return returnInt;
+    }
 
-
+    private int fiveHorizontalLine(String color, int x) {
+	int returnInt = 0;
+	int current = 0;
+	for (int iny = 0; iny < height; iny++) {
+	    boolean match = false;
+	    for (int inx = x; inx < x + 5; inx++) {
+		if (ColorRanges.pixelIsColor(pixels[inx][iny], color)) {
+		    match = true;
+		}
+	    }
+	    if (match) {
+		current++;
+	    }
+	}
+	if (current > returnInt) {
+	    returnInt = current;
+	}
+	return returnInt;
+    }
+    
 
     private int threeHorizontalLine(String color, int x) {
 	int returnInt = 0;
