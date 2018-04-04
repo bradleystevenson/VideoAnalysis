@@ -18,7 +18,7 @@ ticket-059: Add a 5 pixel vertical count to imageValues (CHECK)
 ticket-060: Add a 3 pixel horizontal line count to imageValues (CHECK)
 ticket-061: Add a 5 pixel horizontal line count to imageValues (CHECK)
 ticket-062: Add a 3 pixel vertical line count to imageValues (CHECK)
-ticket-063: Add a 5 pixel vertical line count to imageValues
+ticket-063: Add a 5 pixel vertical line count to imageValues (CHECK)
 ticket-064: Add the new values that you generated to the imageValues database
 ticket-065: Reset the horizontal line to be actually horizontal instead of vertical (CHECK)
 
