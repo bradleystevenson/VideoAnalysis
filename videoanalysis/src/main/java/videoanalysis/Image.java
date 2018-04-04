@@ -14,19 +14,8 @@ public class Image {
 
     public int threeHorizontalLine(String color) {
 	int returnInt = 0;
-	for (int inx = 0; inx < width - 3; inx++) {
-	    int current = threeHorizontalLine(color, inx);
-	    if (current > returnInt) {
-		returnInt = current;
-	    }
-	}
-	return returnInt;	
-    }
-    
-    public int fiveHorizontalLine(String color) {
-	int returnInt = 0;
-	for (int inx = 0; inx < width - 5; inx++) {
-	    int current = fiveHorizontalLine(color, inx);
+	for (int iny = 0; iny < height - 3; iny++) {
+	    int current = threeHorizontalLine(color, iny);
 	    if (current > returnInt) {
 		returnInt = current;
 	    }
@@ -34,33 +23,49 @@ public class Image {
 	return returnInt;
     }
 
-    private int fiveHorizontalLine(String color, int x) {
+    public int fiveHorizontalLine(String color) {
+	int returnInt = 0;
+	for (int iny = 0; iny < height - 5; iny++) {
+	    int current = fiveHorizontalLine(color, iny);
+	    if (current > returnInt) {
+		returnInt = current;
+	    }	    
+	}
+	return returnInt;
+    }
+
+
+    private int fiveHorizontalLine(String color, int y) {
 	int returnInt = 0;
 	int current = 0;
-	for (int iny = 0; iny < height; iny++) {
+	for (int inx = 0; inx < width; inx++) {
 	    boolean match = false;
-	    for (int inx = x; inx < x + 5; inx++) {
+	    for (int iny = y; iny < y + 5; iny++) {
 		if (ColorRanges.pixelIsColor(pixels[inx][iny], color)) {
 		    match = true;
 		}
 	    }
 	    if (match) {
 		current++;
-	    }
+	    } else {
+		if (current > returnInt) {
+		    returnInt = current;
+		}
+		current = 0;
+	    }	    
 	}
 	if (current > returnInt) {
 	    returnInt = current;
 	}
 	return returnInt;
     }
-    
 
-    private int threeHorizontalLine(String color, int x) {
+    private int threeHorizontalLine(String color, int y) {
 	int returnInt = 0;
 	int current = 0;
-	for (int iny = 0; iny < height; iny++) {
+	for (int inx = 0; inx < width; inx++) {
 	    boolean match = false;
-	    for (int inx = x; inx < x + 3; inx++) {
+	    for (int iny = y; iny < y + 3; iny++) {
 		if (ColorRanges.pixelIsColor(pixels[inx][iny], color)) {
 		    match = true;
 		}
