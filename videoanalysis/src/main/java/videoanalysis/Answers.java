@@ -6,6 +6,42 @@ import java.io.File;
 
 public class Answers {
 
+    private static boolean hasFiveVerticalLine(String color, ArrayList<String> columnStrings) {
+	for (String columnName : columnStrings) {
+	    if (columnName.toLowerCase().equals(color + "fiveverticalline")) {
+		return true;
+	    }
+	}
+	return false;
+    }
+    
+    private static boolean hasThreeVerticalLine(String color, ArrayList<String> columnStrings) {
+	for (String columnName : columnStrings) {
+	    if (columnName.toLowerCase().equals(color + "threeverticalline")) {
+		return true;
+	    }
+	}
+	return false;
+    }
+    
+    private static boolean hasThreeHorizontalLine(String color, ArrayList<String> columnStrings) {
+	for (String columnName : columnStrings) {
+	    if (columnName.toLowerCase().equals(color + "threehorizontalline")) {
+		return true;
+	    }
+	}
+	return false;
+    }
+
+    private static boolean hasFiveHorizontalLine(String color, ArrayList<String> columnStrings) {
+	for (String columnName : columnStrings) {
+	    if (columnName.toLowerCase().equals(color + "fivehorizontalline")) {
+		return true;
+	    }
+	}
+	return false;
+    }
+    
     private static boolean hasThreeHorizontalCount(String color, ArrayList<String> columnStrings) {
 	for (String columnName : columnStrings) {
 	    if (columnName.toLowerCase().equals(color + "threehorizontalcount")) {
@@ -119,6 +155,19 @@ public class Answers {
 	    if (!hasFiveVerticalCount(color.getColor(), columnStrings)) {
 		return false;
 	    }
+	    if (!hasThreeHorizontalLine(color.getColor(), columnStrings)) {
+		return false;
+	    }
+	    if (!hasFiveHorizontalLine(color.getColor(), columnStrings)) {
+		return false;
+	    }
+	    if (!hasThreeVerticalLine(color.getColor(), columnStrings)) {
+		return false;
+	    }
+	    if (!hasFiveVerticalLine(color.getColor(), columnStrings)) {
+		return false;
+	    }
+	    
 	}
 	return true;
     }
