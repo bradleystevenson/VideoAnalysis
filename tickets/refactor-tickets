@@ -1,0 +1,3 @@
+refactor-ticket-001: Refactor checking the imageValues table in Answers
+refactor-ticket-002: Lowercase every column name in Answers so you dont have to do it each time
+refactor-ticket-003: Clean up the creation of the imageValues table in the Database class
