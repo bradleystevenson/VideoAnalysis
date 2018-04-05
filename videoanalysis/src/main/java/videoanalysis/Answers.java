@@ -196,6 +196,22 @@ public class Answers {
 		    values.add(image.verticalCount(color.getColor()));
 		    strings.add(color.getColor() + "horizontalcount");
 		    values.add(image.horizontalCount(color.getColor()));
+		    strings.add(color.getColor() + "threeverticalcount");
+		    values.add(image.threeVerticalCount(color.getColor()));
+		    strings.add(color.getColor() + "fiveverticalcount");
+		    values.add(image.fiveVerticalCount(color.getColor()));
+		    strings.add(color.getColor() + "threehorizontalcount");
+		    values.add(image.threeHorizontalCount(color.getColor()));
+		    strings.add(color.getColor() + "fivehorizontalcount");
+		    values.add(image.fiveHorizontalCount(color.getColor()));
+		    strings.add(color.getColor() + "threeverticalline");
+		    values.add(image.threeVerticalLine(color.getColor()));
+		    strings.add(color.getColor() + "fiveverticalline");
+		    values.add(image.fiveVerticalLine(color.getColor()));
+		    strings.add(color.getColor() + "threehorizontalline");
+		    values.add(image.threeHorizontalLine(color.getColor()));
+		    strings.add(color.getColor() + "fivehorizontalline");
+		    values.add(image.fiveHorizontalLine(color.getColor()));		    
 		}
 		//		Tools.insertImageValues(file.toString(), image.colorPixelCount("black"));
 		Tools.insertImageValues(file.toString(), strings, values);
