@@ -240,7 +240,7 @@ public class Image {
     private int fiveHorizontalCount(String color, int y) {
 	int returnInt = 0;
 	for (int iny = y; iny <= y + 4; iny++) {
-	    for (int inx = 0; iny < width; inx++) {
+	    for (int inx = 0; inx < width; inx++) {
 		if (ColorRanges.pixelIsColor(pixels[inx][iny], color)) {
 		    returnInt++;
 		}
