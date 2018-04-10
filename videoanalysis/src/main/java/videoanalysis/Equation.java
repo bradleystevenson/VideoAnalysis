@@ -32,7 +32,6 @@ public class Equation {
 	return false;
     }
 
-
     private boolean determineColumn(String column) {
 	try {
 	    for (int inx =0 ; inx < results.size(); inx++) {
