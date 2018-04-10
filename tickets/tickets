@@ -22,6 +22,6 @@ ticket-063: Add a 5 pixel vertical line count to imageValues (CHECK)
 ticket-064: Add the new values that you generated to the imageValues database (CHECK)
 ticket-065: Reset the horizontal line to be actually horizontal instead of vertical (CHECK)
 ticket-066: Have the table check now check for the new imageValues (CHECK)
-ticket-067: Have the image values insertions use the new image values
+ticket-067: Have the image values insertions use the new image values (CHECK)
 
 
