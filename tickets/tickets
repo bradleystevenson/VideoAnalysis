@@ -25,7 +25,7 @@ ticket-066: Have the table check now check for the new imageValues (CHECK)
 ticket-067: Have the image values insertions use the new image values (CHECK)
 ticket-068: Write a method that starts the process of parsing the pool into various equations (CHECK)
 ticket-069: Write a method that gets continouosly called and finds the pool with the largest same matches
-ticket-070: Write a method that removes the duplicates from the pool
+ticket-070: Write a method that removes the duplicates from the pool (CHECK)
 ticket-071: Create a class that contains the lower limit the higher limit and what value to return
 ticket-072: Create a class that contains the one split and return which value to return (CHECK)
 ticket-073: Write a way for the code to connect columnName to the method in Image Class that Parse will use
