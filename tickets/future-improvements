@@ -3,3 +3,6 @@ future-improvement-002: Refactor the Answers classes so all mutual classes are t
 future-improvement-003: Refactor scoreboard answers to use equation
 future-improvement-004: Refactor the  scoreboard reliant method in DatabaseTools
 future-improvement-005: Refactor the Equation page to use only one comb through of the database instead of two
+future-improvement-006: Add another improvement into Equation page where it narrows down its search to the new min max after the others of the pool have been removed
+future-improvement-007: Add another improvement into the Equation page where it checks for a divide each time through the loop
+future-improvement-008: Add a new table dedicated to just image matches
