@@ -25,6 +25,8 @@ public class Equation {
 	}
     }
 
+    
+
     public boolean foundEquation() {
 	for (boolean bool : bools) {
 	    if (bool) {
