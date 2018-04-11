@@ -21,6 +21,23 @@ public class DatabaseTools {
 	return returnString;
     }
 
+    public static int mostInRange(int lower, int upper, String column, ArrayList<String> inputStrings, String tableName) {
+	String pool = getPoolOfStrings(inputStrings);
+	try {
+	    PreparedStatement statement = connection.prepareStatement("select count(*) from imageValues natural join " + tableName + " where " + column + " >= " + lower + " and " + column + " <= " + upper + " and imageName in " + pool);
+	    ResultSet set = statement.executeQuery();
+	    set.next();
+	    int temp = set.getInt(1);
+	    set.close();
+	    statement.close();
+	    return temp;
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    System.exit(1);
+	}
+	return -1;
+    }
+
     public static boolean allOneType(int lower, int upper, String column, ArrayList<String> inputStrings, String tableName) {
 	String pool = getPoolOfStrings(inputStrings);
 	try {

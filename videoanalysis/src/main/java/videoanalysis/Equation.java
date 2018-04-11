@@ -54,12 +54,20 @@ public class Equation {
 	int currentMax = min;
 	int returnMax = 0;
 	while (currentMax != max) {
-	    if (allOneType(currentMin, currentMax, columnName, imageNames, tableName)) {
+	    if (Tools.allOneType(currentMin, currentMax, columnName, imageNames, tableName)) {
+		int current = Tools.mostInRange(currentMin, currentMax, columnName, imageNames, tableName);
+		if (current > returnMax){
+		    returnMax = current;
+		}
+		currentMax++;
 		//GET COUNT OF ALL THE MATCHES
+	    } else {
+		currentMin++;
+		currentMax = currentMin;
 	    }
 	}
 	//HERE
-
+	return returnMax;
     }
     
     private ArrayList<String> getUnmatchedStrings(ArrayList<String> strings, ArrayList<String> matches) {
