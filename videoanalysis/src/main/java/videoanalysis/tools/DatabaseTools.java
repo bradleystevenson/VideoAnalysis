@@ -11,6 +11,51 @@ import videoanalysis.Color;
 public class DatabaseTools {
 
     private static Connection connection;
+    
+    private static String getPoolOfStrings(ArrayList<String> inputStrings) {
+	String returnString = "(";
+	for (int inx = 0; inx < inputStrings.size() - 1; inx++) {
+	    returnString = returnString + inputStrings.get(inx) + ", ";
+	}
+	returnString = returnString + inputStrings.get(inputStrings.size() - 1) + ")";
+	return returnString;
+    }
+
+    public static boolean allOneType(int lower, int upper, String column, ArrayList<String> inputStrings, String tableName) {
+	String pool = getPoolOfStrings(inputStrings);
+	try {
+	    PreparedStatement statement = connection.prepareStatement("select count(distinct(result)) from imageValues natural join " + tableName + " where " + column + " >= " + lower + " and " + column + " <= " + upper + " and imageName in " + pool);
+	    ResultSet set = statement.executeQuery();
+	    set.next();
+	    int temp = set.getInt(1);
+	    set.close();
+	    statement.close();
+	    return temp == 1;
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    System.exit(1);
+	}
+
+	return false;
+    }
+    
+    
+    public static int getExtremeOfValue(String extreme, String columnName) {
+	try {
+	    PreparedStatement statement = connection.prepareStatement("SELECT "+ extreme + "(" + columnName + ") from imageValues");
+	    ResultSet set = statement.executeQuery();
+	    set.next();
+	    int returnInt = set.getInt(1);
+	    set.close();
+	    statement.close();
+	    return returnInt;
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    System.exit(1);
+	}
+
+	return -1;
+    }
 
     public static ArrayList<String> getImageNames(String tableName) {
 	ArrayList<String> returnStrings = new ArrayList<String>();

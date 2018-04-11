@@ -6,6 +6,14 @@ import java.util.ArrayList;
 
 public class Tools {
 
+    public static boolean allOneType(int lower, int upper, String column, ArrayList<String> inputStrings, String tableName) {
+	return DatabaseTools.allOneType(lower, upper, column, inputStrings, tableName);
+    }
+
+    public static int getExtremeOfValue(String extreme, String columnName) {
+	return DatabaseTools.getExtremeOfValue(extreme, columnName);
+    }
+
     public static ArrayList<String> getImageNames(String tableName) {
 	return DatabaseTools.getImageNames(tableName);
     }

@@ -31,13 +31,37 @@ public class Equation {
     private void determineEquation() {
 	ArrayList<String> imageNames = Tools.getImageNames(tableName);
 	while (imageNames.size() != 0) {
+	    ArrayList<String> columns = Tools.getImageTableFields();
+	    ArrayList<Integer> ints = new ArrayList<Integer>();
+	    int max = 0;
+	    for (String column : columns) {
+		//Get the most in the current pool
+		int current = getMostRemoved(columnName, imageNames);
+		if (current > max) {
+		    max = current;
+		}
+	    }
 	    ArrayList<String> matches = getNewestMatchStrings();
-	    
-	    
 	    imageNames = getUnmatchedStrings(imageNames, matches);
-	}
+	}		
     }
 
+    private int getMostRemoved(String columnName, ArrayList<String> imageNames) {
+	int returnInt = 0;
+	int min = Tools.getExtremeOfValue("min", columnName);
+	int max = Tools.getExtremeOfValue("max", columnName);
+	int currentMin = min;
+	int currentMax = min;
+	int returnMax = 0;
+	while (currentMax != max) {
+	    if (allOneType(currentMin, currentMax, columnName, imageNames, tableName)) {
+		//GET COUNT OF ALL THE MATCHES
+	    }
+	}
+	//HERE
+
+    }
+    
     private ArrayList<String> getUnmatchedStrings(ArrayList<String> strings, ArrayList<String> matches) {
 	ArrayList<String> returnStrings = new ArrayList<String>();
 	for (String string : strings) {
