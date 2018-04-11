@@ -34,16 +34,40 @@ public class Equation {
 	    ArrayList<String> columns = Tools.getImageTableFields();
 	    ArrayList<Integer> ints = new ArrayList<Integer>();
 	    int max = 0;
+	    String maxColumn = "";
 	    for (String column : columns) {
 		//Get the most in the current pool
 		int current = getMostRemoved(columnName, imageNames);
 		if (current > max) {
 		    max = current;
+		    maxColumn = column;
 		}
 	    }
-	    ArrayList<String> matches = getNewestMatchStrings();
+	    ArrayList<String> matches = getNewestMatchStrings(maxColumn, imageNames);
 	    imageNames = getUnmatchedStrings(imageNames, matches);
 	}		
+    }
+
+    private ArrayList<String> getNewestMatchStrings(String columnName, ArrayList<String> imageNames) {
+	ArrayList<String> returnStrings = new ArrayList<String>();
+	int min = Tools.getExtremeOfValue("min", columnName);
+	int max = Tools.getExtremeOfValue("max", columnName);
+	int currentMin = min;
+	int currentMax = min;
+	while (currentMax != max) {
+	    if (Tools.allOneType(currentMin, currentMax, columnName, imageNames, tableName)) {
+		ArrayList<String> current = Tools.getStringsInRange(currentMin, currentMax, columnName, imageNames, tableName);
+		if (current.size() > returnStrings.size()) {
+		    returnStrings = current;
+		}
+		currentMax++;
+	    } else {
+		currentMin++;
+		currentMax = currentMin;
+	    }
+	}
+
+	return returnStrings;
     }
 
     private int getMostRemoved(String columnName, ArrayList<String> imageNames) {
@@ -69,7 +93,7 @@ public class Equation {
 	//HERE
 	return returnMax;
     }
-    
+
     private ArrayList<String> getUnmatchedStrings(ArrayList<String> strings, ArrayList<String> matches) {
 	ArrayList<String> returnStrings = new ArrayList<String>();
 	for (String string : strings) {
@@ -89,13 +113,6 @@ public class Equation {
 	return false;
     }
     
-    private ArrayList<String> getNewestMatchStrings() {
-	ArrayList<String> returnStrings = new ArrayList<String>();
-
-	return returnStrings;
-    }
-
-
     public boolean foundEquation() {
 	for (boolean bool : bools) {
 	    if (bool) {

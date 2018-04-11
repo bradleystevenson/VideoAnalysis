@@ -2,3 +2,4 @@ future-improvement-001: Potentially move all the flags into its own little sub c
 future-improvement-002: Refactor the Answers classes so all mutual classes are the same
 future-improvement-003: Refactor scoreboard answers to use equation
 future-improvement-004: Refactor the  scoreboard reliant method in DatabaseTools
+future-improvement-005: Refactor the Equation page to use only one comb through of the database instead of two
