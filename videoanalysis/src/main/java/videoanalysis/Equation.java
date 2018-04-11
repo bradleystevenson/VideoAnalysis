@@ -31,13 +31,14 @@ public class Equation {
     private void determineEquation() {
 	ArrayList<String> imageNames = Tools.getImageNames(tableName);
 	while (imageNames.size() != 0) {
+	    System.out.println(imageNames.size());
 	    ArrayList<String> columns = Tools.getImageTableFields();
 	    ArrayList<Integer> ints = new ArrayList<Integer>();
 	    int max = 0;
 	    String maxColumn = "";
 	    for (String column : columns) {
 		//Get the most in the current pool
-		int current = getMostRemoved(columnName, imageNames);
+		int current = getMostRemoved(column, imageNames);
 		if (current > max) {
 		    max = current;
 		    maxColumn = column;

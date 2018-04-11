@@ -6,6 +6,11 @@ import java.util.ArrayList;
 
 public class Tools {
 
+    public static ArrayList<String> getStringsInRange(int lower, int upper, String column, ArrayList<String> inputStrings, String tableName) {
+	return DatabaseTools.getStringsInRange(lower, upper, column, inputStrings, tableName);
+	
+    }
+    
     public static int mostInRange(int lower, int upper, String column, ArrayList<String> inputStrings, String tableName) {
 	return DatabaseTools.mostInRange(lower, upper, column, inputStrings, tableName);
 	

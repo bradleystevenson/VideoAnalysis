@@ -15,10 +15,30 @@ public class DatabaseTools {
     private static String getPoolOfStrings(ArrayList<String> inputStrings) {
 	String returnString = "(";
 	for (int inx = 0; inx < inputStrings.size() - 1; inx++) {
-	    returnString = returnString + inputStrings.get(inx) + ", ";
+	    returnString = returnString + "\"" + inputStrings.get(inx) + "\", ";
 	}
-	returnString = returnString + inputStrings.get(inputStrings.size() - 1) + ")";
+	returnString = returnString + "\"" + inputStrings.get(inputStrings.size() - 1) + "\")";
 	return returnString;
+    }
+
+
+    public static ArrayList<String> getStringsInRange(int lower, int upper, String column, ArrayList<String> inputStrings, String tableName) {
+	ArrayList<String> returnStrings = new ArrayList<String>();
+	String pool = getPoolOfStrings(inputStrings);
+	try {
+	    PreparedStatement statement = connection.prepareStatement("select imageName from imageValues natural join " + tableName + " where " + column + " >= " + lower + " and " + column + " <= upper " + " and imageName in " + pool);
+	    ResultSet set = statement.executeQuery();
+	    while (set.next()) {
+		returnStrings.add(set.getString(1));
+	    }
+	    set.close();
+	    statement.close();
+	    return returnStrings;
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    System.exit(1);	    
+	}
+	return returnStrings;
     }
 
     public static int mostInRange(int lower, int upper, String column, ArrayList<String> inputStrings, String tableName) {
