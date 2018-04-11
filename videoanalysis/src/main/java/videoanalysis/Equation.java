@@ -23,9 +23,46 @@ public class Equation {
 		bools.add(determineColumn(string));
 	    }
 	}
+	if (!foundEquation()) {
+	    determineEquation();
+	}
     }
 
+    private void determineEquation() {
+	ArrayList<String> imageNames = Tools.getImageNames(tableName);
+	while (imageNames.size() != 0) {
+	    ArrayList<String> matches = getNewestMatchStrings();
+	    
+	    
+	    imageNames = getUnmatchedStrings(imageNames, matches);
+	}
+    }
+
+    private ArrayList<String> getUnmatchedStrings(ArrayList<String> strings, ArrayList<String> matches) {
+	ArrayList<String> returnStrings = new ArrayList<String>();
+	for (String string : strings) {
+	    if (!isMatchString(string, matches)) {
+		returnStrings.add(string);
+	    }
+	}
+       	return returnStrings;
+    }
+
+    private boolean isMatchString(String string, ArrayList<String> matches) {
+	for (String match : matches) {
+	    if (string.equals(match)) {
+		return true;
+	    }
+	}
+	return false;
+    }
     
+    private ArrayList<String> getNewestMatchStrings() {
+	ArrayList<String> returnStrings = new ArrayList<String>();
+
+	return returnStrings;
+    }
+
 
     public boolean foundEquation() {
 	for (boolean bool : bools) {

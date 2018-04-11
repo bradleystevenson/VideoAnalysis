@@ -6,7 +6,10 @@ import java.util.ArrayList;
 
 public class Tools {
 
-
+    public static ArrayList<String> getImageNames(String tableName) {
+	return DatabaseTools.getImageNames(tableName);
+    }
+    
     public static ArrayList<String> getResultTypes(String tableName) {
 	return DatabaseTools.getResultTypes(tableName);
     }

@@ -12,6 +12,23 @@ public class DatabaseTools {
 
     private static Connection connection;
 
+    public static ArrayList<String> getImageNames(String tableName) {
+	ArrayList<String> returnStrings = new ArrayList<String>();
+	try {
+	    PreparedStatement statement = connection.prepareStatement("SELECT imageName from " + tableName);
+	    ResultSet set = statement.executeQuery();
+	    while (set.next()) {
+		returnStrings.add(set.getString(1));
+	    }
+	    set.close();
+	    statement.close();
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    System.exit(1);
+	}	
+	return returnStrings;
+    }
+
     public static ArrayList<String> getResultTypes(String tableName) {
 	ArrayList<String> returnStrings = new ArrayList<String>();
 	try {
