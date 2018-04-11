@@ -23,7 +23,7 @@ ticket-064: Add the new values that you generated to the imageValues database (C
 ticket-065: Reset the horizontal line to be actually horizontal instead of vertical (CHECK)
 ticket-066: Have the table check now check for the new imageValues (CHECK)
 ticket-067: Have the image values insertions use the new image values (CHECK)
-ticket-068: Write a method that starts the process of parsing the pool into various equations
+ticket-068: Write a method that starts the process of parsing the pool into various equations (CHECK)
 ticket-069: Write a method that gets continouosly called and finds the pool with the largest same matches
 ticket-070: Write a method that removes the duplicates from the pool
 ticket-071: Create a class that contains the lower limit the higher limit and what value to return
