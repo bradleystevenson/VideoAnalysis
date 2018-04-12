@@ -43,7 +43,9 @@ public class Equation {
 		    max = current;
 		    maxColumn = column;
 		}
+		System.out.println(current);
 	    }
+	    System.out.println("MAXCOLUMN:" + maxColumn);
 	    ArrayList<String> matches = getNewestMatchStrings(maxColumn, imageNames);
 	    imageNames = getUnmatchedStrings(imageNames, matches);
 	}		
