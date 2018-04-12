@@ -83,6 +83,7 @@ public class Equation {
 	while (currentMax != max) {
 	    if (Tools.allOneType(currentMin, currentMax, columnName, imageNames, tableName)) {
 		int current = Tools.mostInRange(currentMin, currentMax, columnName, imageNames, tableName);
+		System.out.println(current);
 		if (current > returnMax){
 		    returnMax = current;
 		}
