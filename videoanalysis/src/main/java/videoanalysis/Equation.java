@@ -57,10 +57,12 @@ public class Equation {
 	int max = Tools.getExtremeOfValue("max", columnName);
 	int currentMin = min;
 	int currentMax = min;
+	Parse parse = null;
 	while (currentMax != max) {
 	    if (Tools.allOneType(currentMin, currentMax, columnName, imageNames, tableName)) {
 		ArrayList<String> current = Tools.getStringsInRange(currentMin, currentMax, columnName, imageNames, tableName);
 		if (current.size() > returnStrings.size()) {
+		    parse = new Parse(currentMin, currentMax, "FIX THIS", columnName);
 		    returnStrings = current;
 		}
 		currentMax++;
@@ -69,7 +71,7 @@ public class Equation {
 		currentMax = currentMin;
 	    }
 	}
-
+	parsers.add(parse);
 	return returnStrings;
     }
 

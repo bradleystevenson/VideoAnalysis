@@ -17,7 +17,7 @@ public class Parse {
 	twoDivide = true;
 	lowerDivide = lowerDivideInput;
 	higherDivide = higherDivideInput;
-	returnString = returnStringInput
+	returnString = returnStringInput;
     }
     
     
