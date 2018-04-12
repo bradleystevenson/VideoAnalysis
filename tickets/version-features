@@ -1,4 +1,4 @@
 version-feature-005: Write code that creates a table for the results about which angle the field photo was taken from (CHECK)
 version-feature-006: Refactor the Answers class so that there is one class that does almost all of the input and reading of files (CHECK)
 version-feature-007: Create a bunch more facts in imageValues (CHECK)
-version-feature-008: Update the answers so instead of just looking for one divide look for all the possible divides and subgroups
+version-feature-008: Update the answers so instead of just looking for one divide look for all the possible divides and subgroups (CHECK)
