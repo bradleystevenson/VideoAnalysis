@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
 import videoanalysis.Color;
+import videoanalysis.Answers;
 
 public class DatabaseTools {
 
@@ -149,14 +150,24 @@ public class DatabaseTools {
 	    System.exit(1);
 	}
     }
+
+    private static String getImageValuesTableString(String colorStringInput) {
+	String[] columns = Answers.getColumnStrings();
+	String returnString = "";
+	for (int inx = 0; inx < columns.length - 1; inx++) {
+	    returnString += colorStringInput + columns[inx] + ", ";
+	}
+	returnString += colorStringInput + columns[columns.length - 1];
+	return returnString;
+    }
     
     public static void createImageValuesTable(ArrayList<Color> colors) {
 	try {
 	    String string = "CREATE TABLE imageValues (imageName varchar, ";
 	    for (int inx = 0; inx < colors.size() - 1; inx++) {
-		string = string + colors.get(inx).getColor() + "pixelcount integer, " + colors.get(inx).getColor() + "verticalline integer, " + colors.get(inx).getColor() +"horizontalline integer, " + colors.get(inx).getColor() + "verticalcount integer, " + colors.get(inx).getColor() + "horizontalcount integer, " + colors.get(inx).getColor() + "threehorizontalcount, " + colors.get(inx).getColor() + "fivehorizontalcount integer, " + colors.get(inx).getColor() + "threeverticalcount integer, " + colors.get(inx).getColor() + "fiveverticalcount integer, " + colors.get(inx).getColor() + "threeverticalline integer, " + colors.get(inx).getColor() + "fiveverticalline integer, " + colors.get(inx).getColor() + "threehorizontalline integer, " + colors.get(inx).getColor() + "fivehorizontalline integer, ";
+		string = string + getImageValuesTableString(colors.get(inx).getColor()) + ", ";
 	    }
-	    string = string + colors.get(colors.size() - 1).getColor() + "verticalline integer, " + colors.get(colors.size() - 1).getColor() + "pixelcount integer, " + colors.get(colors.size() -1).getColor() + "horizontalline integer, " + colors.get(colors.size() - 1).getColor() + "verticalcount integer, " + colors.get(colors.size() - 1).getColor() + "horizontalcount integer, " + colors.get(colors.size() - 1).getColor() + "threehorizontalcount integer, " + colors.get(colors.size() - 1).getColor() + "fivehorizontalcount integer, " + colors.get(colors.size() - 1).getColor() + "threeverticalcount integer, " + colors.get(colors.size() - 1).getColor() + "fiveverticalcount integer, " + colors.get(colors.size() - 1).getColor() + "threeverticalline integer, " + colors.get(colors.size() - 1).getColor() + "fiveverticalline integer, " + colors.get(colors.size() - 1).getColor() + "threehorizontalline integer, " + colors.get(colors.size() - 1).getColor() + "fivehorizontalline integer)";
+	    string = string + getImageValuesTableString(colors.get(colors.size() - 1).getColor()) + ")";
 	    System.out.println(string);
 	    PreparedStatement statement = connection.prepareStatement(string);
 	    statement.executeUpdate();
