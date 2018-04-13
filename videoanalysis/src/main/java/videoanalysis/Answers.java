@@ -7,6 +7,12 @@ import java.io.File;
 
 public class Answers {
 
+    private static String[] strings = {"horizontalcount", "verticalcount", "horizontalline", "verticalline", "pixelcount", "threeverticalcount", "fiveverticalcount", "fivehorizontalcount", "threehorizontalcount", "fivehorizontalline", "threehorizontalline", "threeverticalline", "fiveverticalline"};
+
+    public static String[] getColumnStrings() {
+	return strings;
+    }
+
     private static boolean columnExists(String color, String extension, ArrayList<String> columnStrings) {
 	for (String columnName : columnStrings) {
 	    if (columnName.equals(color + extension)) {
@@ -19,7 +25,6 @@ public class Answers {
     private static boolean checkTable() {
 	ArrayList<Color> colors = ColorRanges.getColors();
 	ArrayList<String> columnStrings = Tools.getImageTableFields();
-	String[] strings = {"horizontalcount", "verticalcount", "horizontalline", "verticalline", "pixelcount", "threeverticalcount", "fiveverticalcount", "fivehorizontalcount", "threehorizontalcount", "fivehorizontalline", "threehorizontalline", "threeverticalline", "fiveverticalline"};
 	for (Color color : colors) {
 	    String colorString = color.getColor();
 	    for (String string : strings) {
