@@ -188,7 +188,7 @@ public class DatabaseTools {
 	    ResultSetMetaData rsmd = set.getMetaData();
 	    int columnCount = rsmd.getColumnCount();
 	    for (int inx = 1; inx <= columnCount; inx++) {
-		returnStrings.add(rsmd.getColumnName(inx));
+		returnStrings.add(rsmd.getColumnName(inx).toLowerCase());
 	    }
 	    set.close();
 	    statement.close();
