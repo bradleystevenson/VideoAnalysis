@@ -134,11 +134,11 @@ public class DatabaseTools {
 	try {
 	    String string = "INSERT INTO imageValues (";
 	    for (String column : columns) {
-		string = string + column + ", ";
+		string += column + ", ";
 	    }
 	    string = string + "imageName) values (";
 	    for (int value : values) {
-		string = string + value + ", ";
+		string += value + ", ";
 	    }
 	    string = string + "\"" + imageName + "\")";
 	    System.out.println(string);
@@ -172,7 +172,6 @@ public class DatabaseTools {
 	    PreparedStatement statement = connection.prepareStatement(string);
 	    statement.executeUpdate();
 	    statement.close();
-
 	} catch (Exception e) {
 	    e.printStackTrace();
 	    System.exit(1);
